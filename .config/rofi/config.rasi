@@ -1,0 +1,20 @@
+@theme "/usr/share/rofi/themes/Arc-Dark.rasi"
+configuration {
+    font: "Ubuntu 16";
+    show-icons: true;
+    display-window: "Window";
+    display-drun: "Search";
+}
+element {
+    spacing: 12px; /* <-- This is the key line */
+}
+
+element-icon {
+    size: 32px;
+    icon-theme: "breeze-dark";
+}
+
+listview {
+    lines: 12;
+}
+
