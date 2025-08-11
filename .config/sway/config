@@ -111,7 +111,7 @@ bindsym $mod+Shift+e exec $HOME/.config/sway/exit.sh
 set $lock swaylock -f -c 000000
 exec swayidle -w \
     timeout 60000 'swaylock -f -c 000000' \
-    timeout 900 'swaymsg "output * dpms off"' \
+    timeout 600 'swaymsg "output * dpms off"' \
     resume 'swaymsg "output * dpms on"' \
     before-sleep 'swaylock -f -c 000000'
 
@@ -287,10 +287,8 @@ bindsym $mod+F3 exec brillo -U 10
 exec --no-startup-id nm-applet
 exec --no-startup-id /usr/libexec/polkit-gnome-authentication-agent-1
 exec --no-startup-id dunst
-exec --no-startup-id brillo -S 50
+#exec --no-startup-id brillo -S 50
 exec --no-startup-id pipewire
-#exec-once walker --gapplication-service
-#for_window [app_id="^walker$"] floating enable, sticky enable, resize set 30 ppt 60 ppt, border pixel 2
 
 #=============================================#
 # Keyboard Shortcuts (launching applications) #
