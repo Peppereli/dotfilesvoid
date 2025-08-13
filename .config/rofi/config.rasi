@@ -8,13 +8,10 @@ configuration {
 element {
     spacing: 14px; /* <-- This is the key line */
 }
-
 element-icon {
     size: 32px;
     icon-theme: "breeze-dark";
 }
-
 listview {
     lines: 12;
 }
-

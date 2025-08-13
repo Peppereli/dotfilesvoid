@@ -1,15 +1,10 @@
 [window]
-dimensions = { columns = 80, lines = 30 }
 opacity = 0.85
 [font]
 size = 16
-
 [font.normal]
 family = "JetBrains Mono Nerd Font"
 style = "Regular"
-
-# Arkham Night v2.0 Color Scheme for Alacritty
-# Inspired by Batman's operational displays: deep darks, sharp accents, and clear status indicators.
 
 [colors.primary]
 # Background: The deepest possible black, for absolute focus and minimal light emission.
