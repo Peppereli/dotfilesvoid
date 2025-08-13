@@ -52,14 +52,14 @@ input "1267:12586:ELAN0504:01_04F3:312A_Touchpad" {
 #========================#
 # Appearance and Theming #
 #========================#
-font pango:monospace 12
+font pango:Inter 12
 set $gnome_schema org.gnome.desktop.interface
 exec_always --no-startup-id "gsettings set org.gnome.desktop.interface text-scaling-factor 1.2"
 exec_always {
     gsettings set $gnome_schema gtk-theme "Breeze-Dark"
     gsettings set $gnome_schema icon-theme "breeze-dark"
     gsettings set $gnome_schema cursor-theme "breeze"
-    gsettings set $gnome_schema font-name "Ubuntu 10"
+    gsettings set $gnome_schema font-name "Inter 10"
     gsettings set $gnome_schema color-scheme "prefer-dark" # For dark mode preference
 }
 
@@ -67,7 +67,7 @@ exec_always {
 set $background #245d7b
 set $color_urgent #fb4934
 set $text_color #ffffff
-set $title_bg_unfocused #666666
+set $title_bg_unfocused #000000
 set $title_outline_active #245d7b 
 set $title_outline_unfocused #332b2b
 
@@ -79,9 +79,9 @@ client.unfocused        $title_outline_unfocused $title_bg_unfocused $text_color
 client.urgent           $color_urgent            $color_urgent       $color_urgent $color_urgent         $color_urgent
 
 # Add gaps in between all application windows:
-gaps inner 4
+gaps inner 3
 # Configure the default border:
-default_border pixel 2
+default_border pixel 3
 
 #====================================#
 # Activate the panel                 #
@@ -117,6 +117,8 @@ exec swayidle -w \
 
 # Screen locking (manual)
 bindsym $mod+Escape exec $lock
+bindsym $mod+shift+d exec "swaymsg 'output * dpms off'"
+bindsym $mod+control+d exec "swaymsg 'output * dpms on'"
 
 
 #========================================#
@@ -287,7 +289,7 @@ bindsym $mod+F3 exec brillo -U 10
 exec --no-startup-id nm-applet
 exec --no-startup-id /usr/libexec/polkit-gnome-authentication-agent-1
 exec --no-startup-id dunst
-#exec --no-startup-id brillo -S 50
+exec --no-startup-id brillo -S 50
 exec --no-startup-id pipewire
 
 #=============================================#
@@ -298,7 +300,7 @@ set $menu wofi --show drun  -i | xargs swaymsg exec --
 
 # Launch your browser:
 #bindsym $mod+shift+return exec flatpak run com.brave.Browser
-bindsym $mod+shift+return exec librewolf
+bindsym $mod+shift+return exec flatpak run com.brave.Browser
 # Open a file manager:
 bindsym ctrl+$mod+return exec thunar
 
@@ -326,5 +328,5 @@ include /etc/sway/config-vars.d/*
 include /etc/sway/config.d/*
 
 # Set the Wallpaper:
-output * bg $HOME/.config/sway/bat14.jpg fill
+output * bg $HOME/.config/sway/bat31.jpeg fill
 
