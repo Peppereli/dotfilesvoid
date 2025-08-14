@@ -50,7 +50,7 @@ client.urgent           $color_urgent            $color_urgent       $color_urge
 # Add gaps in between all application windows:
 #gaps inner 2
 # Configure the default border:
-default_border pixel 3
+default_border pixel 2
 #====================================#
 # Activate the panel                 #
 #====================================#
