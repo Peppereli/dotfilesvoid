@@ -33,7 +33,7 @@ exec_always {
     gsettings set $gnome_schema font-name "Inter 10"
     gsettings set $gnome_schema color-scheme "prefer-dark" # For dark mode preference
 }
-exec_always "xrdb -merge ~/.Xresources"
+exec_always "xrdb -load ~/.Xdefaults"
 # Declare Colors:
 set $background #516380
 set $color_urgent #FA5F55
