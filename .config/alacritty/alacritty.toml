@@ -1,86 +1,52 @@
 [window]
-opacity = 0.85
+opacity = 0.9
 [font]
 size = 16
 [font.normal]
 family = "JetBrains Mono Nerd Font"
 style = "Regular"
 
-[colors.primary]
-# Background: The deepest possible black, for absolute focus and minimal light emission.
-background = "0x000000" # Pure black
-# Foreground: A crisp, slightly desaturated white for optimal readability against the dark background.
-foreground = "0xE0E0E0" # Off-white
+[colors]
+primary.background = "0x1e2127"
+primary.foreground = "0xabb2bf"
+primary.bright_foreground = "0xe6efff"
 
-[colors.cursor]
-# Cursor: A bright, distinct diagnostic blue to highlight active input.
-text = "0x000000" # Cursor text should blend with background
-cursor = "0x0088CC" # Diagnostic blue
+# You can uncomment the following section to include cursor colors if needed.
+ [colors.cursor]
+ text = "0x000000"
+ cursor = "0xffffff"
 
-[colors.vi_mode_cursor]
-# Vi Mode Cursor: A clear critical red to indicate a different, potentially more sensitive mode.
-text = "0x000000"
-cursor = "0xCC0000" # Critical red
-
-[colors.selection]
-# Selection: A subtle, darker grey for selected text, clearly visible but non-distracting.
-text = "0xE0E0E0" # Text color remains readable
-background = "0x2A2A2A" # Dark grey for selection background
-
-[colors.search]
-# Search Matches: Blue for general matches, red for the currently focused match.
-matches = { foreground = "0x000000", background = "0x0088CC" } # Blue highlights
-focused_match = { foreground = "0xFFFFFF", background = "0xCC0000" } # Red for focused match
-
-[colors.footer_bar]
-# Footer Bar: A slightly lighter background than primary, with normal foreground.
-background = "0x1A1A1A" # Dark grey for footer
-foreground = "0xE0E0E0"
-
-[colors.hints]
-# Hints: Critical red for the start of the hint, diagnostic blue for the end.
-start = { foreground = "0x000000", background = "0xCC0000" } # Critical red
-end = { foreground = "0x000000", background = "0x0088CC" }   # Diagnostic blue
-
-[colors.line_indicator]
-# Line Indicator: Diagnostic blue for visual guides like line numbers.
-foreground = "0x0088CC"
-background = "0x1A1A1A"
-
-# Normal (ANSI) colors: For standard terminal output (e.g., `ls --color`)
 [colors.normal]
-# Black: A slightly visible dark grey, distinct from the pure black background.
-black = "0x1A1A1A"
-# Red: Standard critical/error color.
-red = "0xCC0000"
-# Green: Standard success/operational status color.
-green = "0x00CC88"
-# Yellow: Standard warning/caution color.
-yellow = "0xFFFF00" # A pure, vibrant yellow
-# Blue: Standard informational/diagnostic color.
-blue = "0x0088CC"
-# Magenta: General highlight/secondary information.
-magenta = "0x9933CC" # A deep, subtle purple
-# Cyan: Informational/secondary diagnostic.
-cyan = "0x00CCCC" # A more true cyan
-# White: Default text color, slightly lighter than foreground to stand out as a 'normal' ANSI white.
-white = "0xF0F0F0"
+black = "0x1e2127"
+red = "0xe06c75"
+green = "0x98c379"
+yellow = "0xd19a66"
+blue = "0x61afef"
+magenta = "0xc678dd"
+cyan = "0x56b6c2"
+white = "0x828791"
 
-# Bright (ANSI) colors: For `ls --color` bold directories, `grep` matches, etc.
 [colors.bright]
-# Bright Black: A lighter grey for dimmed or less important text.
-black = "0x5A5A5A"
-# Bright Red: More intense critical.
-red = "0xFF4444"
-# Bright Green: More intense success.
-green = "0x33FFBB"
-# Bright Yellow: More intense warning.
-yellow = "0xFFFF33"
-# Bright Blue: More intense diagnostic.
-blue = "0x33AAFF"
-# Bright Magenta: More intense highlight.
-magenta = "0xCC66FF"
-# Bright Cyan: More intense informational.
-cyan = "0x33FFFF"
-# Bright White: Pure white for strong highlights and emphasized text.
-white = "0xFFFFFF"
+black = "0x5c6370"
+red = "0xe06c75"
+green = "0x98c379"
+yellow = "0xd19a66"
+blue = "0x61afef"
+magenta = "0xc678dd"
+cyan = "0x56b6c2"
+white = "0xe6efff"
+
+[colors.dim]
+black = "0x1e2127"
+red = "0xe06c75"
+green = "0x98c379"
+yellow = "0xd19a66"
+blue = "0x61afef"
+magenta = "0xc678dd"
+cyan = "0x56b6c2"
+white = "0x828791"
+
+# The following section for indexed colors can be uncommented if needed.
+ [[colors.indexed_colors]]
+ index = 16
+ color = "0x000000"
