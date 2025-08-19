@@ -27,19 +27,19 @@ input type:touchpad {
 font pango:Inter 12
 exec_always {
     gsettings set org.gnome.desktop.interface text-scaling-factor 1.2
-    gsettings set $gnome_schema gtk-theme "Breeze-Dark"
-    gsettings set $gnome_schema icon-theme "breeze-dark"
+    gsettings set $gnome_schema gtk-theme "Nordic-darker"
+    gsettings set $gnome_schema icon-theme "Nordzy-dark"
     gsettings set $gnome_schema cursor-theme "breeze_cursors"
     gsettings set $gnome_schema font-name "Inter 10"
     gsettings set $gnome_schema color-scheme "prefer-dark" # For dark mode preference
 }
 exec_always "xrdb -merge ~/.Xresources"
 # Declare Colors:
-set $background #245d7b
-set $color_urgent #fb4934
+set $background #516380
+set $color_urgent #FA5F55
 set $text_color #ffffff
-set $title_bg_unfocused #40404F
-set $title_outline_active #245d7b 
+set $title_bg_unfocused #20252d
+set $title_outline_active #516380 
 set $title_outline_unfocused #332b2b
 # Set Colors:           Border                   Background          Text          Indicator             Child Border
 client.background       $background
@@ -215,6 +215,7 @@ exec --no-startup-id pipewire
 #=============================================#
 set $term alacritty
 set $menu rofi -show drun
+#set $menu wofi --show drun  -i | xargs swaymsg exec --
 # Launch your browser:
 bindsym $mod+shift+return exec flatpak run com.brave.Browser
 # Open a file manager:
