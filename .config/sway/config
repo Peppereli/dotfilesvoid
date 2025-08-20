@@ -48,7 +48,7 @@ client.focused_inactive $title_outline_unfocused $background         $text_color
 client.unfocused        $title_outline_unfocused $title_bg_unfocused $text_color   $title_outline_active
 client.urgent           $color_urgent            $color_urgent       $color_urgent $color_urgent         $color_urgent
 # Add gaps in between all application windows:
-#gaps inner 2
+gaps inner 6
 # Configure the default border:
 default_border pixel 2
 #====================================#
