@@ -13,6 +13,7 @@
         "sway/window"
     ],
     "modules-right": [
+        "custom/launcher",
         "idle_inhibitor",
         "pulseaudio",
         "cpu",
@@ -21,10 +22,11 @@
         "backlight",
         "battery",
         "battery#bat2",
-        "clock",
         "keyboard-state",
         "sway/language",
-        "tray"
+        "tray",
+        "clock",
+        "custom/power"
     ],
     // Modules configuration
     "sway/workspaces": {
@@ -41,6 +43,9 @@
             "locked": "",
             "unlocked": ""
         }
+    },
+    "sway/language": {
+      "tooltip": false
     },
     "sway/mode": {
         "format": "<span style=\"italic\">{}</span>"
@@ -64,6 +69,7 @@
         "spacing": 10
     },
     "clock": {
+      "format":"{:%H:%M}",
         "tooltip-format": "<tt><big>{calendar}</big></tt>",
         "format-alt": "{:%d-%m-%Y}"
         //"on-click" : "calendar-app"
@@ -73,7 +79,7 @@
         "tooltip": false
     },
     "memory": {
-        "format": "{}% "
+        "format": "{}% "
     },
     "temperature": {
         // "thermal-zone": 2,
@@ -121,6 +127,17 @@
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "Disconnected ⚠",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
+    "custom/launcher": {
+        "format": "󰮫",
+        "tooltip-format": "Launch Rofi",
+        "tooltip": true,
+        "on-click": "rofi -show drun"
+    },
+    "custom/power": {
+        "format": "󰤆",
+        "tooltip": false,
+        "on-click": "~/.config/waybar/powermenu"
     },
     "pulseaudio": {
         "scroll-step": 5,

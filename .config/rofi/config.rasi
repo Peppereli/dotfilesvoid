@@ -1,17 +1,16 @@
-@theme "/usr/share/rofi/themes/Arc-Dark.rasi"
+
+@theme "~/.config/rofi/theme.rasi"
 configuration {
     font: "Inter 14";
     show-icons: true;
     display-window: "Window";
     display-drun: "Search";
-}
-element {
-    spacing: 14px; /* <-- This is the key line */
+    modi: "window,run,drun";
 }
 element-icon {
     size: 32px;
-    icon-theme: "breeze-dark";
 }
 listview {
     lines: 12;
 }
+

@@ -166,7 +166,13 @@ button:hover {
     background-color: #2ecc71;
     color: #000000;
 }
-
+#custom-launcher {
+background-color: rgba(43, 48, 59, 0.5);
+min-width:30px;
+}
+#custom-power{
+  min-width:25px;
+}
 label:focus {
     background-color: #000000;
 }

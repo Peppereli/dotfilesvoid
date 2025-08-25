@@ -15,7 +15,7 @@ image/webp=qimgv.desktop
 application/pdf=org.pwmt.zathura.desktop
 application/x-cbz=org.pwmt.zathura.desktop
 application/x-cbr=org.pwmt.zathura.desktop
-inode/directory=Thunar.desktop
+inode/directory=thunar.desktop
 x-scheme-handler/http=com.brave.Browser.desktop
 x-scheme-handler/https=com.brave.Browser.desktop
 text/html=com.brave.Browser.desktop
@@ -55,8 +55,12 @@ application/yaml=nvim.desktop
 text/yaml=nvim.desktop
 text/x-log=nvim.desktop
 font/ttf=geany.desktop
+application/octet-stream=nvim.desktop
 
 [Added Associations]
 font/ttf=geany.desktop;
 application/xml=geany.desktop;
 text/x-scheme=geany.desktop;
+image/png=org.gnome.gThumb.desktop;mirage.desktop;swayimg.desktop;imv.desktop;
+inode/directory=thunar.desktop;
+application/octet-stream=nvim.desktop;
