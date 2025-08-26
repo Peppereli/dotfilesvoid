@@ -176,6 +176,7 @@ button:hover {
 }
 #custom-power{
   min-width:26px;
+  padding: 2px 2px 0px 1px;
 }
 #custom-launcher{
   min-width:26px;

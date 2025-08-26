@@ -213,7 +213,7 @@ exec --no-startup-id pipewire
 #=============================================#
 # Keyboard Shortcuts (launching applications) #
 #=============================================#
-set $term alacritty
+set $term foot
 set $menu rofi -show drun
 #set $menu wofi --show drun  -i | xargs swaymsg exec --
 bindsym $mod+shift+return exec flatpak run com.brave.Browser

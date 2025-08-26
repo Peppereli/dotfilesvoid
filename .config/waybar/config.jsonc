@@ -78,7 +78,7 @@
         "format": "",
         "tooltip-format": "calendar",
         "tooltip": true,
-        "on-click" : "alacritty -e zsh -c 'cal -y; read -n 1 -s -r -p'"
+        "on-click" : "foot -e zsh -c 'cal -y; read -n 1 -s -r -p'"
     },
     "cpu": {
         "format": "{usage}% ",
