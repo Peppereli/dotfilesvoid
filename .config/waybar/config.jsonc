@@ -71,8 +71,8 @@
     "clock": {
       "format":"{:%H:%M}",
         "tooltip-format": "<tt><big>{calendar}</big></tt>",
-        "format-alt": "{:%d-%m-%Y}"
-        //"on-click" : "calendar-app"
+        "format-alt": "{:%d-%m-%Y}",
+        "on-click": "alacritty -e zsh -c 'cal -y; read -n 1 -s -r -p'"
     },
     "cpu": {
         "format": "{usage}% ",
