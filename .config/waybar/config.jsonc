@@ -26,6 +26,7 @@
         "sway/language",
         "tray",
         "clock",
+        "custom/calendar",
         "custom/power"
     ],
     // Modules configuration
@@ -71,8 +72,13 @@
     "clock": {
       "format":"{:%H:%M}",
         "tooltip-format": "<tt><big>{calendar}</big></tt>",
-        "format-alt": "{:%d-%m-%Y}",
-        "on-click": "alacritty -e zsh -c 'cal -y; read -n 1 -s -r -p'"
+        "format-alt": "{:%d-%m-%Y}"
+    },
+    "custom/calendar": {
+        "format": "",
+        "tooltip-format": "calendar",
+        "tooltip": true,
+        "on-click" : "alacritty -e zsh -c 'cal -y; read -n 1 -s -r -p'"
     },
     "cpu": {
         "format": "{usage}% ",
@@ -87,12 +93,14 @@
         "critical-threshold": 100,
         // "format-critical": "{temperatureC}°C {icon}",
         "format": "{temperatureC}°C {icon}",
+        "tooltip": false,
         "format-icons": ["", "", ""]
         //need to find nerdfont icons for different states of temp
     },
     "backlight": {
         "format": "{percent}% {icon}",
-        "format-icons": ["", "", "", "", "", "", "", "", ""]
+        "format-icons": ["", "", "", "", "", "", "", "", ""],
+        "tooltip":false
     },
    "battery": {
         "states": {

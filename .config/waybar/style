@@ -7,6 +7,7 @@
 window#waybar {
     background-color: rgba (43, 48, 59, 0.5);
     border-bottom: 3px rgba(43, 48, 59, 0.5);
+
     color: #ffffff;
     transition-property: background-color;
     transition-duration: .5s;
@@ -15,6 +16,15 @@ window#waybar {
 window#waybar.hidden {
     opacity: 0.2;
 }
+
+/*
+window#waybar.empty {
+    background-color: transparent;
+}
+window#waybar.solo {
+    background-color: #FFFFFF;
+}
+*/
 
 window#waybar.termite {
     background-color: #3F3F3F;
@@ -41,31 +51,9 @@ button:hover {
 
 /* you can set a style on hover for any module like this */
 #pulseaudio:hover {
- background: rgba(0, 0, 0, 0.2);
+    background-color: #000000;
 }
 
-#clock:hover {
- background: rgba(0, 0, 0, 0.2);
-}
-
-#custom-calendar:hover {
- background: rgba(0, 0, 0, 0.2);
-}
-
-#battery:hover {
- background: rgba(0, 0, 0, 0.2);
-}
-#idle_inhibitor:hover {
- background: rgba(0, 0, 0, 0.2);
-}
-
-#custom-power:hover {
- background: rgba(0, 0, 0, 0.2);
-}
-
-#custom-launcher:hover {
- background: rgba(0, 0, 0, 0.2);
-}
 #workspaces button {
     padding: 0 3px;
     background-color: transparent;
@@ -128,12 +116,23 @@ button:hover {
     margin-right: 0;
 }
 
+#clock {
+    background-color: rgba(43, 48, 59, 0.5);
+}
+
 #battery {
+    background-color:  rgba(43, 48, 59, 0.5);
     color: #ffffff;
+
 }
 
 #battery.charging, #battery.plugged {
     color: #ffffff;
+    background-color: #000000;
+}
+#custom-calendar{
+background-color: rgba(43, 48, 59, 0.5);
+
 }
 
 @keyframes blink {
@@ -142,9 +141,7 @@ button:hover {
         color: #000000;
     }
 }
-#custom-calendar{
-  padding: 2px 2px 0px 0px;
-}
+
 /* Using steps() instead of linear as a timing function to limit cpu usage */
 #battery.critical:not(.charging) {
     background-color: #f53c3c;
@@ -174,22 +171,34 @@ button:hover {
     background-color: #2ecc71;
     color: #000000;
 }
-#custom-power{
-  min-width:26px;
+#custom-launcher {
+background-color: rgba(43, 48, 59, 0.5);
+min-width:30px;
 }
-#custom-launcher{
-  min-width:26px;
+#custom-power{
+  min-width:25px;
 }
 label:focus {
     background-color: #000000;
 }
 
 #cpu {
+    background-color: rgba(43, 48, 59, 0.5);
     color: #ffffff;
+}
+
+#memory {
+    background-color: rgba(43, 48, 59, 0.5);
+
 }
 
 #disk {
     background-color: #964B00;
+}
+
+#backlight {
+    background-color: rgba(43, 48, 59, 0.5);
+
 }
 
 #network {
@@ -201,6 +210,8 @@ label:focus {
 }
 
 #pulseaudio {
+    background-color: rgba(43, 48, 59, 0.5);
+
     color: #ffffff;
 }
 
@@ -232,8 +243,18 @@ label:focus {
     background-color: #ffa000;
 }
 
+#temperature {
+    background-color: rgba(43, 48, 59, 0.5);
+;
+}
+
 #temperature.critical {
     background-color: #eb4d4b;
+}
+
+#tray {
+    background-color: rgba(43, 48, 59, 0.5);
+
 }
 
 #tray > .passive {
@@ -245,7 +266,14 @@ label:focus {
     background-color: #eb4d4b;
 }
 
+#idle_inhibitor {
+    background-color: rgba(43, 48, 59, 0.5);
+
+}
+
 #idle_inhibitor.activated {
+    background-color: rgba(43, 48, 59, 0.5);
+
     color: #ffffff;
 }
 
@@ -267,6 +295,8 @@ label:focus {
 }
 
 #language {
+    background: rgba(43, 48, 59, 0.5);
+
     color: #ffffff;
     padding: 0 5px;
     margin: 0 0px;
@@ -286,6 +316,11 @@ label:focus {
 }
 
 #keyboard-state > label.locked {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+#scratchpad {
+    background: rgba(0, 0, 0, 0.2);
 }
 
 #scratchpad.empty {

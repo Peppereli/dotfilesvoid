@@ -19,28 +19,28 @@ input type:touchpad {
     middle_emulation enabled
     dwt enabled
     accel_profile "flat"
-    pointer_accel 0.6
+    pointer_accel 0.8
 }
 #========================#
 # Appearance and Theming #
 #========================#
 font pango:Inter 12
+exec_always "xrdb -load ~/.Xdefaults"
 exec_always {
     gsettings set org.gnome.desktop.interface text-scaling-factor 1.2
     gsettings set $gnome_schema gtk-theme "Nordic-darker"
     gsettings set $gnome_schema icon-theme "Arc"
     gsettings set $gnome_schema cursor-theme "Adwaita"
     gsettings set $gnome_schema font-name "Inter 10"
-    gsettings set $gnome_schema color-scheme "prefer-dark" # For dark mode preference
+    gsettings set $gnome_schema color-scheme "prefer-dark"
 }
-exec_always "xrdb -load ~/.Xdefaults"
 # Declare Colors:
 set $background #516380
 set $color_urgent #FA5F55
 set $text_color #ffffff
 set $title_bg_unfocused #36454F
 set $title_outline_active #516380 
-set $title_outline_unfocused #332b2b
+set $title_outline_unfocused #000000
 # Set Colors:           Border                   Background          Text          Indicator             Child Border
 client.background       $background
 client.focused          $title_outline_active    $background         $text_color   $title_outline_active $title_outline_active
@@ -48,7 +48,7 @@ client.focused_inactive $title_outline_unfocused $background         $text_color
 client.unfocused        $title_outline_unfocused $title_bg_unfocused $text_color   $title_outline_active
 client.urgent           $color_urgent            $color_urgent       $color_urgent $color_urgent         $color_urgent
 # Add gaps in between all application windows:
-#gaps inner 12
+# gaps inner 12
 # Configure the default border:
 default_border pixel 2
 #====================================#
@@ -66,12 +66,12 @@ set $alt Mod1
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+e exec ~/.config/sway/exit.sh
 # Screen locking (automatic, with a timeout)
-set $lock 'swaylock -f -c 000000'
+set $lock 'swaylock -f -c 36454F'
 exec swayidle -w \
     timeout 60000 $lock \
     timeout 600 'swaymsg "output * dpms off"' \
-    resume 'swaymsg "output * dpms on"'
-   # before-sleep $lock
+    resume 'swaymsg "output * dpms on"' \
+    before-sleep 'swaylock -f -c 36454F'
 # Screen locking (manual)
 bindsym $mod+Escape exec $lock
 bindsym $mod+shift+d exec "swaymsg 'output * dpms off'"
@@ -198,13 +198,13 @@ bindsym $mod+F7 exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym $mod+F8 exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 #shutdown and reboot
 bindsym $mod+Shift+F2 exec --no-startup-id "brillo -O && loginctl reboot"
+bindsym $mod+Shift+F3 exec --no-startup-id "brillo -O && loginctl suspend"
 bindsym $mod+Shift+F1 exec --no-startup-id "brillo -O && loginctl poweroff"
 # Brightness
 bindsym XF86MonBrightnessDown exec brillo -U 10
 bindsym XF86MonBrightnessUp exec brillo -A 10
 bindsym $mod+F4 exec brillo -A 10
 bindsym $mod+F3 exec brillo -U 10
-#autostart applications
 exec --no-startup-id nm-applet
 exec --no-startup-id /usr/libexec/polkit-gnome-authentication-agent-1
 exec --no-startup-id dunst
@@ -216,17 +216,14 @@ exec --no-startup-id pipewire
 set $term alacritty
 set $menu rofi -show drun
 #set $menu wofi --show drun  -i | xargs swaymsg exec --
-# Launch your browser:
 bindsym $mod+shift+return exec flatpak run com.brave.Browser
-# Open a file manager:
 set $fm thunar
 bindsym ctrl+$mod+return exec $fm
-# Open a terminal emulator:
 bindsym $mod+return exec $term
-# Kill focused window:
 bindsym $mod+q kill
-# Open the application launcher:
 bindsym $mod+space exec $menu
+bindsym $mod+g exec gammastep -O 2600
+bindsym $mod+x exec pkill gammastep
 # screenshot shortcuts:
 bindsym $mod+Ctrl+s exec cd ~/Pictures && grim -g "$(slurp)" && thunar ~/Pictures/
 bindsym $mod+Ctrl+f exec cd ~/Pictures && grim -g "$(slurp)"
