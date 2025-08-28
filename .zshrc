@@ -1,61 +1,52 @@
-autoload -U colors && colors
-PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
-
-# History in cache directory:
 HISTSIZE=10000
 SAVEHIST=10000
 HISTFILE=~/.zsh_history
+alias sudo='doas'
+# Load colors and set the prompt
+autoload -U colors && colors
+PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
+# --- Aliases ---
+# General aliases
 alias ff="fastfetch"
 alias ls='ls --color=auto'
-alias sudo='doas'
+alias gpp='g++'
+# Neovim config aliases
 alias editsway='nvim ~/.config/sway/config'
 alias editwaybar='nvim ~/.config/waybar/config.jsonc'
 alias editwaycss='nvim ~/.config/waybar/style.css'
-# Basic auto/tab complete:
+# --- Autocompletion ---
+# Basic auto/tab complete
 autoload -U compinit
-zstyle ':completion:*' menu select
 zmodload zsh/complist
 compinit
-_comp_options+=(globdots)		# Include hidden files.
-
-# vi mode
+zstyle ':completion:*' menu select
+_comp_options+=(globdots)
+# --- Vi Mode and Cursor ---
+# Enable Vi mode
 bindkey -v
 export KEYTIMEOUT=1
-
-# Use vim keys in tab complete menu:
+# Use Vim keys in the tab completion menu
 bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
-bindkey -v '^?' backward-delete-char
-
-# Change cursor shape for different vi modes.
+# Custom function to change cursor shape based on vi mode
 function zle-keymap-select {
-  if [[ ${KEYMAP} == vicmd ]] ||
-     [[ $1 = 'block' ]]; then
-    echo -ne '\e[1 q'
-  elif [[ ${KEYMAP} == main ]] ||
-       [[ ${KEYMAP} == viins ]] ||
-       [[ ${KEYMAP} = '' ]] ||
-       [[ $1 = 'beam' ]]; then
-    echo -ne '\e[5 q'
+  if [[ ${KEYMAP} == vicmd ]]; then
+    echo -ne '\e[1 q' # Block cursor for command mode
+  elif [[ ${KEYMAP} == main ]] || [[ ${KEYMAP} == viins ]]; then
+    echo -ne '\e[5 q' # Beam cursor for insert mode
   fi
 }
-function y() {
-	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
-	yazi "$@" --cwd-file="$tmp"
-	IFS= read -r -d '' cwd < "$tmp"
-	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
-	rm -f -- "$tmp"
-}
 zle -N zle-keymap-select
-zle-line-init() {
-    zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
-    echo -ne "\e[5 q"
+# Set initial cursor shape and update on each new prompt
+function zle-line-init {
+  zle -K viins # Ensure insert mode is the default
+  echo -ne '\e[5 q'
 }
 zle -N zle-line-init
-echo -ne '\e[5 q' # Use beam shape cursor on startup.
-preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
-
+preexec() { echo -ne '\e[5 q' ;}
+# --- Plugins ---
+# Source plugins, suppressing errors
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null

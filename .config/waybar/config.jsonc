@@ -71,8 +71,9 @@
     },
     "clock": {
       "format":"{:%H:%M}",
-        "tooltip-format": "<tt><big>{calendar}</big></tt>",
-        "format-alt": "{:%d-%m-%Y}"
+        //"format-alt": "{:%d-%m-%Y}",
+        "tooltip-format": "{:%d-%m-%Y}",
+        "tooltip": true
     },
     "custom/calendar": {
         "format": "",

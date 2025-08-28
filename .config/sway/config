@@ -1,6 +1,7 @@
 #========================#
 #   Keyboard and Mouse   #
 #========================#
+
 input type:keyboard {
     xkb_layout "us,ru,kz,ir"
     xkb_options "grp:alt_shift_toggle"
@@ -8,32 +9,36 @@ input type:keyboard {
     repeat_delay 300
     repeat_rate 50
 }
+
 input type:pointer {
     accel_profile "flat"
     pointer_accel 0.5
 }
+
 input type:touchpad {
     tap enabled
-    events enabled
     natural_scroll enabled
     middle_emulation enabled
     dwt enabled
     accel_profile "flat"
     pointer_accel 0.8
 }
+
 #========================#
 # Appearance and Theming #
 #========================#
 font pango:Inter 12
-exec_always "xrdb -load ~/.Xdefaults"
+
 exec_always {
+    xrdb -load ~/.Xdefaults
     gsettings set org.gnome.desktop.interface text-scaling-factor 1.2
-    gsettings set $gnome_schema gtk-theme "Nordic-darker"
-    gsettings set $gnome_schema icon-theme "Arc"
-    gsettings set $gnome_schema cursor-theme "Adwaita"
-    gsettings set $gnome_schema font-name "Inter 10"
-    gsettings set $gnome_schema color-scheme "prefer-dark"
+    gsettings set org.gnome.desktop.interface gtk-theme "Nordic-darker"
+    gsettings set org.gnome.desktop.interface icon-theme "Arc"
+    gsettings set org.gnome.desktop.interface cursor-theme "Adwaita"
+    gsettings set org.gnome.desktop.interface font-name "Inter 10"
+    gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
 }
+
 # Declare Colors:
 set $background #516380
 set $color_urgent #FA5F55
@@ -48,16 +53,18 @@ client.focused_inactive $title_outline_unfocused $background         $text_color
 client.unfocused        $title_outline_unfocused $title_bg_unfocused $text_color   $title_outline_active
 client.urgent           $color_urgent            $color_urgent       $color_urgent $color_urgent         $color_urgent
 # Add gaps in between all application windows:
-gaps inner 10
+gaps inner 12
 # Configure the default border:
 default_border pixel 2
 #====================================#
 # Activate the panel                 #
 #====================================#
 # Set the waybar command for the application launcher:
+
 bar {
     swaybar_command waybar
 }
+
 #====================================#
 # Keyboard Shortcuts (Sway-specific) #
 #====================================#
@@ -67,11 +74,13 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+e exec ~/.config/sway/exit.sh
 # Screen locking (automatic, with a timeout)
 set $lock 'swaylock -f -c 36454F'
+
 exec swayidle -w \
     timeout 60000 $lock \
     timeout 600 'swaymsg "output * dpms off"' \
     resume 'swaymsg "output * dpms on"' \
     before-sleep 'swaylock -f -c 36454F'
+
 # Screen locking (manual)
 bindsym $mod+Escape exec $lock
 bindsym $mod+shift+d exec "swaymsg 'output * dpms off'"
@@ -104,6 +113,7 @@ bindsym $mod+Shift+l move right
 # to floating windows:
 floating_modifier $mod normal
 # Resizing containers:
+
 mode "resize" {
     # Resize windows with arrow keys:
     bindsym Left resize shrink width 10px
@@ -119,6 +129,7 @@ mode "resize" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
+
 bindsym $mod+r mode "resize"
 #=================================#
 # Keyboard Shortcuts (Workspaces) #
@@ -186,25 +197,25 @@ bindsym $mod+minus scratchpad show
 #===============================#
 # Keyboard Shortcuts (Hardware) #
 #===============================#
+# Volume Controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle 
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+# Volume Controls (with Mod key)
 bindsym $mod+F6 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym $mod+F5 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
-#mute audio
 bindsym $mod+F7 exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
-#mute mic
 bindsym $mod+F8 exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
-#shutdown and reboot
+# Shutdown and reboot 
 bindsym $mod+Shift+F2 exec --no-startup-id "brillo -O && loginctl reboot"
-bindsym $mod+Shift+F3 exec --no-startup-id "brillo -O && loginctl suspend"
 bindsym $mod+Shift+F1 exec --no-startup-id "brillo -O && loginctl poweroff"
 # Brightness
 bindsym XF86MonBrightnessDown exec brillo -U 10
 bindsym XF86MonBrightnessUp exec brillo -A 10
 bindsym $mod+F4 exec brillo -A 10
 bindsym $mod+F3 exec brillo -U 10
+# Autostart
 exec --no-startup-id nm-applet
 exec --no-startup-id /usr/libexec/polkit-gnome-authentication-agent-1
 exec --no-startup-id dunst
@@ -213,21 +224,23 @@ exec --no-startup-id pipewire
 #=============================================#
 # Keyboard Shortcuts (launching applications) #
 #=============================================#
+#set $menu wofi --show drun  -i | xargs swaymsg exec --
 set $term foot
 set $menu rofi -show drun
-#set $menu wofi --show drun  -i | xargs swaymsg exec --
-bindsym $mod+shift+return exec flatpak run com.brave.Browser
 set $fm thunar
+#set $browser flatpak run com.brave.Browser
+set $browser firefox
+bindsym $mod+shift+return exec $browser
 bindsym ctrl+$mod+return exec $fm
 bindsym $mod+return exec $term
-bindsym $mod+q kill
 bindsym $mod+space exec $menu
-bindsym $mod+g exec gammastep -O 2600
+bindsym $mod+g exec gammastep -O 3000
 bindsym $mod+x exec pkill gammastep
-# screenshot shortcuts:
-bindsym $mod+Ctrl+s exec cd ~/Pictures && grim -g "$(slurp)" && thunar ~/Pictures/
-bindsym $mod+Ctrl+f exec cd ~/Pictures && grim -g "$(slurp)"
-bindsym $mod+Ctrl+g exec cd ~/Pictures && grim
+bindsym $mod+q kill
+# Screenshot shortcuts:
+bindsym $mod+ctrl+s exec cd ~/Pictures && grim -g "$(slurp)" && thunar ~/Pictures/
+bindsym $mod+ctrl+f exec cd ~/Pictures && grim -g "$(slurp)"
+bindsym $mod+ctrl+g exec cd ~/Pictures && grim
 #======#
 # Misc #
 #======#
