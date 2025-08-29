@@ -1,25 +1,23 @@
 #!/bin/bash
-
 # Define colors for output
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[0;33m'
 CYAN='\033[0;36m'
 NC='\033[0m' # No Color
-
 echo -e "${CYAN}OS:${NC} $(grep PRETTY_NAME /etc/os-release | cut -d'=' -f2 | tr -d '"') "
 echo -e "${CYAN}Kernel:${NC} $(uname -r)"
-echo -e "${CYAN}Architecture:${NC} $(uname -m)"
-echo -e "${CYAN}Hostname:${NC} $(uname -n)"
 echo -e "${CYAN}Uptime:${NC} $(uptime -p | sed 's/up //')"
-echo -e "${CYAN}User:${NC} $(whoami)"
-echo -e "${CYAN}Shell:${NC} $(echo $SHELL | awk -F'/' '{print $NF}')"
+echo -e ""
+echo -e "${RED}Hostname:${NC} $(uname -n)"
+echo -e "${RED}User:${NC} $(whoami)"
+echo -e "${RED}Shell:${NC} $(echo $SHELL | awk -F'/' '{print $NF}')"
 echo -e "${RED}Packages:${NC} $(xbps-query -l | wc -l)"
-echo "-------------------"
+echo -e ""
+echo -e "${GREEN}Architecture:${NC} $(uname -m)"
 echo -e "${GREEN}CPU:${NC} $(lscpu | grep 'Model name' | sed -e 's/Model name:[[:space:]]*//')"
 echo -e "${GREEN}Threads:${NC} $(nproc)"
 echo -e "${GREEN}RAM:${NC} $(free -h | awk '/^Mem:/ {print $2}')"
-echo "-------------------"
+echo -e ""
 echo -e "${YELLOW}Disk Usage:${NC}"
 df -h | grep -E '^/dev/|^Filesystem'
-echo "-------------------"
