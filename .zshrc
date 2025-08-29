@@ -46,6 +46,17 @@ function zle-line-init {
 }
 zle -N zle-line-init
 preexec() { echo -ne '\e[5 q' ;}
+
+l () {
+    tmp="$(mktemp)"
+    lf -last-dir-path="$tmp" "$@"
+    if [ -f "$tmp" ]; then
+        dir="$(cat "$tmp")"
+        rm -f "$tmp"
+        [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
+    fi
+}
+bindkey -s '^o' 'lfcd\n'
 # --- Plugins ---
 # Source plugins, suppressing errors
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
