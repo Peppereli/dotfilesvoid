@@ -18,6 +18,8 @@ echo -e "${GREEN}Architecture:${NC} $(uname -m)"
 echo -e "${GREEN}CPU:${NC} $(lscpu | grep 'Model name' | sed -e 's/Model name:[[:space:]]*//')"
 echo -e "${GREEN}Threads:${NC} $(nproc)"
 echo -e "${GREEN}RAM:${NC} $(free -h | awk '/^Mem:/ {print $2}')"
+echo -e "${GREEN}Battery status:${NC} "
+acpi -V | head -n 2
 echo -e ""
 echo -e "${YELLOW}Disk Usage:${NC}"
 df -h | grep -E '^/dev/|^Filesystem'
