@@ -20,3 +20,8 @@ user_pref("browser.urlbar.suggest.topsites", false);
 
 // PREF: ask where to save every file
 user_pref("browser.download.useDownloadDir", false);
+
+user_pref("gfx.webrender.all", true); // enables WR + additional features
+user_pref("layers.acceleration.force-enabled", true);
+user_pref("media.hardware-video-decoding.force-enabled", true);
+user_pref("media.ffmpeg.vaapi.enabled", true);
