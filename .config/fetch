@@ -13,12 +13,33 @@ echo -e "${RED}Hostname:${NC} $(uname -n)"
 echo -e "${RED}User:${NC} $(whoami)"
 echo -e "${RED}Shell:${NC} $(echo $SHELL | awk -F'/' '{print $NF}')"
 echo -e "${RED}Packages:${NC} $(xbps-query -l | wc -l)"
+display_outputs=$(ls -d /sys/class/drm/card*-* 2>/dev/null)
 echo -e ""
-echo -e "${GREEN}Architecture:${NC} $(uname -m)"
+if [ -z "$display_outputs" ]; then
+    echo "No display outputs found in /sys/class/drm/."
+    exit 1
+fi
+for output_path in $display_outputs; do
+    # Check if the monitor is connected and enabled
+    if grep -q "connected" "$output_path/status"; then
+        # Extract the display name from the path
+        display_name=$(basename "$output_path")
+
+        # Get the current resolution from the 'modes' file
+        resolution=$(head -n 1 "$output_path/modes" 2>/dev/null)
+
+        # Check if a resolution was found
+        if [ -n "$resolution" ]; then
+            echo -e "${GREEN}Display:${NC} $display_name"
+            echo -e "${GREEN}Resolution:${NC} $resolution"
+        fi
+    fi
+done
 echo -e "${GREEN}CPU:${NC} $(lscpu | grep 'Model name' | sed -e 's/Model name:[[:space:]]*//')"
+echo -e "${GREEN}Architecture:${NC} $(uname -m)"
 echo -e "${GREEN}Threads:${NC} $(nproc)"
 echo -e "${GREEN}RAM:${NC} $(free -h | awk '/^Mem:/ {print $2}')"
-echo -e "${GREEN}Battery status:${NC} "
+echo -e "${GREEN}Battery status:${NC}"
 acpi -V | head -n 2
 echo -e ""
 echo -e "${YELLOW}Disk Usage:${NC}"
