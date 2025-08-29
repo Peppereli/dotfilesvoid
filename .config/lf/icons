@@ -1,0 +1,49 @@
+# Specific file extensions
+*.zip 
+*.tar 
+*.rar 
+*.7z 
+*.tar.gz 
+*.jpg 
+*.jpeg 
+*.png 
+*.gif 
+*.webp 
+*.mp4 
+*.mkv 
+*.avi 
+*.mov 
+*.mp3 󰎆
+*.flac 󰎆
+*.ogg 󰎆
+*.wav 󰎆
+*.cpp 
+*.c 
+*.mkv 
+# Text and code files
+*.txt 
+*.pdf 
+*.log 
+*.md 
+# Scripts and executable files
+*.sh 
+*.py 
+*.js 
+*.html 
+*.css 
+# Configuration files
+*.json 
+*.yml 
+*.yaml 
+*.ini 
+*.conf 
+*.jsonc 
+*.rc 
+# Directories
+di 
+# Files
+fi 
+# Symbolic links
+ln 󰌷
+# Executable files
+ex 󱓟
