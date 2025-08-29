@@ -1,9 +1,6 @@
 {
-     //"layer": "top", // Waybar at top layer
-    "position": "bottom", // Waybar position (top|bottom|left|right)
-    "height": 28, // Waybar height (to be removed for auto height)
-    "spacing": 4, // Gaps between modules (4px)
-    // Choose the order of the modules
+    "position": "bottom",
+    "height": 28,
     "modules-left": [
         "sway/workspaces",
         "sway/mode",
@@ -29,13 +26,12 @@
         "custom/calendar",
         "custom/power"
     ],
-    // Modules configuration
     "sway/workspaces": {
-         "disable-scroll": false,
-         "all-outputs": true,
-         "warp-on-scroll": false,
-         "format": "{name}"
-      },  
+        "disable-scroll": false,
+        "all-outputs": true,
+        "warp-on-scroll": false,
+        "format": "{name}"
+    },
     "keyboard-state": {
         "numlock": true,
         "capslock": true,
@@ -46,7 +42,7 @@
         }
     },
     "sway/language": {
-      "tooltip": false
+        "tooltip": false
     },
     "sway/mode": {
         "format": "<span style=\"italic\">{}</span>"
@@ -58,7 +54,7 @@
         "tooltip": true,
         "tooltip-format": "{app}: {title}"
     },
-   "idle_inhibitor": {
+    "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
             "activated": "",
@@ -70,16 +66,15 @@
         "spacing": 10
     },
     "clock": {
-      "format":"{:%H:%M}",
-        //"format-alt": "{:%d-%m-%Y}",
-        "tooltip-format": "{:%d-%m-%Y}",
-        "tooltip": true
+        "format": "{:%H:%M}",
+        "tooltip": true,
+        "tooltip-format": "{:%d-%m-%Y}"
     },
     "custom/calendar": {
         "format": "",
-        "tooltip-format": "calendar",
         "tooltip": true,
-        "on-click" : "foot -e zsh -c 'cal -y; read -n 1 -s -r -p'"
+        "tooltip-format": "calendar",
+        "on-click": "foot -e zsh -c 'cal -y; read -n 1 -s -r -p'"
     },
     "cpu": {
         "format": "{usage}% ",
@@ -89,28 +84,25 @@
         "format": "{}% "
     },
     "temperature": {
-        // "thermal-zone": 2,
         "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
         "critical-threshold": 100,
-        // "format-critical": "{temperatureC}°C {icon}",
         "format": "{temperatureC}°C {icon}",
         "tooltip": false,
         "format-icons": ["", "", ""]
-        //need to find nerdfont icons for different states of temp
     },
     "backlight": {
         "format": "{percent}% {icon}",
         "format-icons": ["", "", "", "", "", "", "", "", ""],
-        "tooltip":false
+        "tooltip": false
     },
-   "battery": {
+    "battery": {
         "states": {
             "warning": 20,
             "critical": 10
         },
         "format": "{capacity}% {icon}",
         "format-full": "{capacity}% 󰂄",
-        "format-charging": "{capacity}% ", 
+        "format-charging": "{capacity}% ",
         "format-plugged": "{capacity}% ",
         "format-alt": "{time} {icon}",
         "format-icons": ["", "", "", "", ""]
@@ -119,15 +111,15 @@
         "bat": "BAT2"
     },
     "power-profiles-daemon": {
-      "format": "{icon}",
-      "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
-      "tooltip": true,
-      "format-icons": {
-        "default": "",
-        "performance": "",
-        "balanced": "",
-        "power-saver": ""
-      }
+        "format": "{icon}",
+        "tooltip": true,
+        "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+        "format-icons": {
+            "default": "",
+            "performance": "",
+            "balanced": "",
+            "power-saver": ""
+        }
     },
     "network": {
         "format-wifi": "{essid} ({signalStrength}%) ",
@@ -139,8 +131,8 @@
     },
     "custom/launcher": {
         "format": "󰮫",
-        "tooltip-format": "Launch Rofi",
         "tooltip": true,
+        "tooltip-format": "Launch Rofi",
         "on-click": "rofi -show drun"
     },
     "custom/power": {
@@ -153,7 +145,7 @@
         "format": "{volume}% {icon} {format_source}",
         "format-bluetooth": "{volume}% {icon} {format_source}",
         "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": " {format_source}", //need icons for muted audio state
+        "format-muted": " {format_source}",
         "format-source": "{volume}% ",
         "format-source-muted": "",
         "format-icons": {
@@ -167,4 +159,4 @@
         },
         "on-click": "pavucontrol"
     }
-  }
+}

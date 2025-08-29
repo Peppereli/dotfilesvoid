@@ -1,15 +1,19 @@
+/*
+* Global settings
+*/
 * {
-    /* `otf-font-awesome` is required to be installed for icons */
     font-family: Inter, Symbols Nerd Font;
     font-size: 16px;
 }
 
+/*
+* Waybar main window
+*/
 window#waybar {
-    background-color: rgba (43, 48, 59, 0.5);
+    background-color: rgba(43, 48, 59, 0.5);
     border-bottom: 3px rgba(43, 48, 59, 0.5);
     color: #ffffff;
-    transition-property: background-color;
-    transition-duration: .5s;
+    transition: background-color .5s;
 }
 
 window#waybar.hidden {
@@ -25,47 +29,91 @@ window#waybar.chromium {
     border: none;
 }
 
+/*
+* Buttons
+*/
 button {
-    /* Use box-shadow instead of border so the text isn't offset */
     box-shadow: inset 0 -3px transparent;
-    /* Avoid rounded borders under each button name */
     border: none;
     border-radius: 0;
 }
 
-/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 button:hover {
     background: inherit;
     box-shadow: inset 0 -3px #ffffff;
 }
 
-/* you can set a style on hover for any module like this */
-#pulseaudio:hover {
- background: rgba(0, 0, 0, 0.2);
+/*
+* Modules
+*/
+#clock,
+#custom-calendar,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#wireplumber,
+#custom-media,
+#tray,
+#mode,
+#idle_inhibitor,
+#scratchpad,
+#power-profiles-daemon,
+#mpd {
+    padding: 0 10px;
+    color: #ffffff;
 }
 
-#clock:hover {
- background: rgba(0, 0, 0, 0.2);
+#custom-calendar {
+    padding: 2px 2px 0 0;
 }
 
-#custom-calendar:hover {
- background: rgba(0, 0, 0, 0.2);
+#custom-power {
+    min-width: 26px;
+    padding: 2px 2px 0 1px;
 }
 
-#battery:hover {
- background: rgba(0, 0, 0, 0.2);
-}
-#idle_inhibitor:hover {
- background: rgba(0, 0, 0, 0.2);
+#custom-launcher {
+    min-width: 26px;
 }
 
-#custom-power:hover {
- background: rgba(0, 0, 0, 0.2);
+#power-profiles-daemon {
+    padding-right: 15px;
 }
 
+#language {
+    color: #ffffff;
+    padding: 0 5px;
+    margin: 0;
+    min-width: 20px;
+}
+
+#privacy {
+    padding: 0;
+}
+
+#privacy-item {
+    padding: 0 5px;
+    color: white;
+}
+
+/* Grouping hover effects */
+#pulseaudio:hover,
+#custom-calendar:hover,
+#battery:hover,
+#idle_inhibitor:hover,
+#custom-power:hover,
 #custom-launcher:hover {
- background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.2);
 }
+
+/*
+* Workspaces
+*/
 #workspaces button {
     padding: 0 3px;
     background-color: transparent;
@@ -85,55 +133,31 @@ button:hover {
     background-color: #DC143C;
 }
 
-#mode {
-    background-color: #64727D;
-    box-shadow: inset 0 -3px #ffffff;
-}
-
-#clock,
-#custom-calendar,
-#battery,
-#cpu,
-#memory,
-#disk,
-#temperature,
-#backlight,
-#network,
-#pulseaudio,
-#wireplumber,
-#custom-media,
-#tray,
-#mode,
-#idle_inhibitor,
-#scratchpad,
-#power-profiles-daemon,
-
-#mpd {
-    padding: 0 10px;
-    color: #ffffff;
-}
-
 #window,
 #workspaces {
     margin: 0 4px;
 }
 
-/* If workspaces is the leftmost module, omit left margin */
 .modules-left > widget:first-child > #workspaces {
     margin-left: 0;
 }
 
-/* If workspaces is the rightmost module, omit right margin */
 .modules-right > widget:last-child > #workspaces {
     margin-right: 0;
 }
 
-#battery {
-    color: #ffffff;
+/*
+* Module-specific styles
+*/
+#mode {
+    background-color: #64727D;
+    box-shadow: inset 0 -3px #ffffff;
 }
 
-#battery.charging, #battery.plugged {
+#battery.critical:not(.charging) {
+    background-color: #f53c3c;
     color: #ffffff;
+    animation: blink 0.5s steps(12) infinite alternate;
 }
 
 @keyframes blink {
@@ -141,23 +165,6 @@ button:hover {
         background-color: #ffffff;
         color: #000000;
     }
-}
-#custom-calendar{
-  padding: 2px 2px 0px 0px;
-}
-/* Using steps() instead of linear as a timing function to limit cpu usage */
-#battery.critical:not(.charging) {
-    background-color: #f53c3c;
-    color: #ffffff;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: steps(12);
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-}
-
-#power-profiles-daemon {
-    padding-right: 15px;
 }
 
 #power-profiles-daemon.performance {
@@ -174,20 +181,6 @@ button:hover {
     background-color: #2ecc71;
     color: #000000;
 }
-#custom-power{
-  min-width:26px;
-  padding: 2px 2px 0px 1px;
-}
-#custom-launcher{
-  min-width:26px;
-}
-label:focus {
-    background-color: #000000;
-}
-
-#cpu {
-    color: #ffffff;
-}
 
 #disk {
     background-color: #964B00;
@@ -199,10 +192,6 @@ label:focus {
 
 #network.disconnected {
     background-color: #f53c3c;
-}
-
-#pulseaudio {
-    color: #ffffff;
 }
 
 #pulseaudio.muted {
@@ -267,39 +256,16 @@ label:focus {
     background-color: #51a37a;
 }
 
-#language {
-    color: #ffffff;
-    padding: 0 5px;
-    margin: 0 0px;
-    min-width: 20px;
-}
-
 #keyboard-state {
     background: #97e1ad;
     color: #000000;
-    padding: 0 0px;
+    padding: 0;
     margin: 0 5px;
     min-width: 16px;
 }
 
 #keyboard-state > label {
     padding: 0 5px;
-}
-
-#keyboard-state > label.locked {
-}
-
-#scratchpad.empty {
-	background-color: transparent;
-}
-
-#privacy {
-    padding: 0;
-}
-
-#privacy-item {
-    padding: 0 5px;
-    color: white;
 }
 
 #privacy-item.screenshare {
@@ -312,4 +278,8 @@ label:focus {
 
 #privacy-item.audio-out {
     background-color: #0069d4;
+}
+
+label:focus {
+    background-color: #000000;
 }

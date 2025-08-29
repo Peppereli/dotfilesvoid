@@ -1,4 +1,3 @@
-
 @theme "~/.config/rofi/theme.rasi"
 configuration {
     font: "Inter 14";
@@ -13,4 +12,3 @@ element-icon {
 listview {
     lines: 12;
 }
-
