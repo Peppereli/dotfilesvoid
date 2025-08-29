@@ -21,7 +21,7 @@ input type:touchpad {
     middle_emulation enabled
     dwt enabled
     accel_profile "flat"
-    pointer_accel 0.8
+    pointer_accel 0.6
 }
 
 #========================#
@@ -32,10 +32,6 @@ font pango:Inter 12
 exec_always {
     xrdb -load ~/.Xdefaults
     gsettings set org.gnome.desktop.interface text-scaling-factor 1.2
-    gsettings set org.gnome.desktop.interface gtk-theme "Nordic-darker"
-    gsettings set org.gnome.desktop.interface icon-theme "Arc"
-    gsettings set org.gnome.desktop.interface cursor-theme "Adwaita"
-    gsettings set org.gnome.desktop.interface font-name "Inter 10"
     gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
 }
 

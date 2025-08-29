@@ -5,6 +5,7 @@ configuration {
     display-window: "Window";
     display-drun: "Search";
     modi: "window,run,drun";
+    terminal: "foot";
 }
 element-icon {
     size: 32px;

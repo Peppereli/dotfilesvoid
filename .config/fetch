@@ -38,6 +38,6 @@ echo -e "${GREEN}Architecture:${NC} $(uname -m)"
 echo -e "${GREEN}Threads:${NC} $(nproc)"
 echo -e "${GREEN}RAM:${NC} $(free -h | grep 'Mem:' | awk '{print $3 "/" $2}')"
 echo -e "${GREEN}Battery:${NC}"
-acpi -V | head -n 2
+acpi -i
 echo -e "${YELLOW}Disk Usage:${NC}"
 df -h | grep -E '^/dev/|^Filesystem'
