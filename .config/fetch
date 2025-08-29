@@ -8,13 +8,11 @@ NC='\033[0m' # No Color
 echo -e "${CYAN}OS:${NC} $(grep PRETTY_NAME /etc/os-release | cut -d'=' -f2 | tr -d '"') "
 echo -e "${CYAN}Kernel:${NC} $(uname -r)"
 echo -e "${CYAN}Uptime:${NC} $(uptime -p | sed 's/up //')"
-echo -e ""
 echo -e "${RED}Hostname:${NC} $(uname -n)"
 echo -e "${RED}User:${NC} $(whoami)"
 echo -e "${RED}Shell:${NC} $(echo $SHELL | awk -F'/' '{print $NF}')"
 echo -e "${RED}Packages:${NC} $(xbps-query -l | wc -l)"
 display_outputs=$(ls -d /sys/class/drm/card*-* 2>/dev/null)
-echo -e ""
 if [ -z "$display_outputs" ]; then
     echo "No display outputs found in /sys/class/drm/."
     exit 1
@@ -41,6 +39,5 @@ echo -e "${GREEN}Threads:${NC} $(nproc)"
 echo -e "${GREEN}RAM:${NC} $(free -h | awk '/^Mem:/ {print $2}')"
 echo -e "${GREEN}Battery status:${NC}"
 acpi -V | head -n 2
-echo -e ""
 echo -e "${YELLOW}Disk Usage:${NC}"
 df -h | grep -E '^/dev/|^Filesystem'
