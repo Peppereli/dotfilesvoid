@@ -2,7 +2,6 @@
 -- title : Suckless NeoVim Config
 -- author: Radley E. Sidwell-lewis
 -- ================================================================================================
-
 -- theme & transparency
 vim.cmd.colorscheme("unokai")
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
@@ -16,6 +15,14 @@ vim.opt.cursorline = false                          -- Highlight current line
 vim.opt.wrap = true                               -- Don't wrap lines
 vim.opt.scrolloff = 10                             -- Keep 10 lines above/below cursor 
 vim.opt.sidescrolloff = 8                          -- Keep 8 columns left/right of cursor
+
+-- Auto close for brackets
+vim.keymap.set('i', '(', '()<Left>', { noremap = true })
+vim.keymap.set('i', '"', '""<Left>', { noremap = true })
+vim.keymap.set('i', "'", "''<Left>", { noremap = true })
+vim.keymap.set('i', '<', '<><Left>', { noremap = true })
+vim.keymap.set('i', '{', '{}<Left>', { noremap = true })
+vim.keymap.set('i', '[', '[]<Left>', { noremap = true })
 
 -- Indentation
 vim.opt.tabstop = 2                                -- Tab width
