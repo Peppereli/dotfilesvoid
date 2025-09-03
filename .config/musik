@@ -1,0 +1,129 @@
+general navigation (can't be changed):
+
+    ESC focus/defocus the command bar
+    TAB select next window
+    SHIFT+TAB select previous window
+    ENTER activate or toggle the selected item
+    M-ENTER show context menu for the selected item
+    UP, DOWN, LEFT, RIGHT, PAGE_UP, PAGE_DOWN, HOME and END should all behave as you'd expect
+    ^D quit
+    ? to view/edit keyboard shortcuts
+
+main view switching:
+
+    ~ switch to console view
+    a switch to library view
+    s switch to settings view
+
+playback:
+
+    i volume up 5%
+    k volume down 5%
+    j previous track
+    l next track
+    m toggle volume mute
+    u back 10 seconds
+    o forward 10 seconds
+    . toggle repeat mode (off/track/list)
+    , (un)shuffle play queue
+    v show / hide visualizer
+    ^e configure equalizer
+    ^p pause/resume (globally)
+    ^x stop (unload streams, free resources)
+
+in the library view:
+
+    b show browse view
+    n show play queue
+    f show album/artist/genre search
+    t show track search
+    1 browse by artist
+    2 browse by album
+    3 browse by genre
+    4 browse by album artist
+    5 browse by playlist
+        M-n create a new empty playlist
+        M-s save the currently selected playlist
+        DEL (BACKSPACE on macos) in the playlists pane: delete the selected playlist
+        M-r rename the selected playlist
+        M-UP (^UP on macos) move the selected track up
+        M-DOWN (^DOWN on macos) move the selected track down
+            On macOS you may need to disable mission control's keyboard shorcuts in System Preferences > Mission Control > Keyboard and Mouse Shortcuts for ^UP and ^DOWN to work
+        DEL (BACKSPACE on macos) in the tracks pane: delete the selected track
+    d browse by directory
+    x jump to playing artist/album/genre in browse view
+    M-ENTER show a context menu for the currently selected item (album, artist, genre, track)
+    SPACE pause/resume
+
+if you have any list of tracks focused:
+
+    M-a hot-swaps the current play queue with the selected list of tracks, without interrupting playback
+
+in the play queue view:
+
+    M-s save current queue as a playlist
+    M-l load a previously saved playlist
+    M-x delete a previously saved playlist
+    M-r rename a playlist
+    M-UP (^UP on macos) move the selected track up
+    M-DOWN (^DOWN on macos) move the selected track down
+    DEL (BACKSPACE on macos) delete the selected track
+
+windows-specific keys:
+
+    ^+ increase font size
+    ^- decrease font size
+
+system-wide hotkeys
+
+if you're a windows user there are a few system-wide hotkeys available to you. they can be used at any time, as long as musikcube is running, regardless of which application is in the foreground:
+
+    RCTRL + RALT + F1 toggle pause/play
+    RCTRL + RALT + F2 stop playback and free resources
+    RCTRL + RALT + j previous track
+    RCTRL + RALT + l next track
+    RCTRL + RALT + i volume up
+    RCTRL + RALT + k volume down
+    RCTRL + RALT + m toggle mute
+    RCTRL + RALT + F8 toggle shuffle
+
+Pages 9
+
+    home
+
+home
+building
+building
+installing
+installing
+major release versions
+major release versions
+raspberry pi
+raspberry pi
+remote api documentation
+remote api documentation
+ssl server setup
+ssl server setup
+user guide
+
+    "Meta" and "^" modifier keys
+    the "command bar"
+    changing shortcuts
+    default keys
+    system-wide hotkeys
+
+user guide
+
+    "Meta" and "^" modifier keys
+    the "command bar"
+    changing shortcuts
+    default keys
+    system-wide hotkeys
+
+vi style navigation keys
+
+    vi style navigation keys
+
+Clone this wiki locally
+Footer
+

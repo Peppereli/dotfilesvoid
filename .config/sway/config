@@ -109,7 +109,6 @@ bindsym $mod+Shift+l move right
 # to floating windows:
 floating_modifier $mod normal
 # Resizing containers:
-
 mode "resize" {
     # Resize windows with arrow keys:
     bindsym Left resize shrink width 10px
@@ -234,7 +233,7 @@ bindsym $mod+g exec gammastep -O 3000
 bindsym $mod+x exec pkill gammastep
 bindsym $mod+q kill
 # Screenshot shortcuts:
-bindsym $mod+ctrl+s exec cd ~/Pictures && grim -g "$(slurp)" && thunar ~/Pictures/
+bindsym $mod+ctrl+s exec cd ~/Pictures && grim -g "$(slurp)" && thunar ~/Pictures
 bindsym $mod+ctrl+f exec cd ~/Pictures && grim -g "$(slurp)"
 bindsym $mod+ctrl+g exec cd ~/Pictures && grim
 #======#

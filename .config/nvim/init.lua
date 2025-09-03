@@ -3,7 +3,6 @@ local cmd = vim.cmd
 local api = vim.api
 local fn = vim.fn
 local g = vim.g
-
 -- Options
 opt.number = true
 opt.relativenumber = true
