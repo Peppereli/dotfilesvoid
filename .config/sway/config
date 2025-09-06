@@ -27,7 +27,7 @@ input type:touchpad {
 #========================#
 # Appearance and Theming #
 #========================#
-font pango:Inter 12
+font pango:Inter 11
 
 exec_always {
     xrdb -load ~/.Xdefaults
@@ -49,7 +49,7 @@ client.focused_inactive $title_outline_unfocused $background         $text_color
 client.unfocused        $title_outline_unfocused $title_bg_unfocused $text_color   $title_outline_active
 client.urgent           $color_urgent            $color_urgent       $color_urgent $color_urgent         $color_urgent
 # Add gaps in between all application windows:
-gaps inner 12
+#gaps inner 10
 # Configure the default border:
 default_border pixel 2
 #====================================#
@@ -236,10 +236,11 @@ bindsym $mod+q kill
 bindsym $mod+ctrl+s exec cd ~/Pictures && grim -g "$(slurp)" && thunar ~/Pictures
 bindsym $mod+ctrl+f exec cd ~/Pictures && grim -g "$(slurp)"
 bindsym $mod+ctrl+g exec cd ~/Pictures && grim
+bindsym $mod+shift+w exec ~/.config/sway/powermenu
 #======#
 # Misc #
 #======#
 include /etc/sway/config-vars.d/*
 include /etc/sway/config.d/*
 # Set the Wallpaper:
-output * bg $HOME/.config/sway/bat17.jpg fill
+output * bg "/home/dabat/.config/sway/Wallpapers/bat30.jpg" fill

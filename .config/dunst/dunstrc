@@ -9,16 +9,12 @@
     # The default frame color
     frame_color = "#5e81ac"
     frame_width = 2
-    icon_theme = Arc
     enable_recursive_icon_lookup = true
     # The separator color between notifications
     separator_color = frame
 
     # corner radius for notifications
     corner_radius = 2
-
-    # Opacity for the notification window. (0-100)
-    transparency = 20
 
 [urgency_low]
     # background color for low urgency notifications

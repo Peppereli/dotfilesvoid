@@ -1,0 +1,20 @@
+#!/bin/sh
+
+SWAY_CONFIG="$HOME/.config/sway/config"
+WALLPAPER_DIR="$HOME/.config/sway/Wallpapers"
+
+chosen=$(ls "$WALLPAPER_DIR" | rofi -dmenu -i -p "Choose Wallpaper" -theme-str '@import "theme.rasi"')
+
+# Check if a wallpaper was selected.
+if [ -z "$chosen" ]; then
+    echo "No wallpaper was selected. Exiting."
+    exit 0
+fi
+
+new_wallpaper_command="output * bg \"$WALLPAPER_DIR/$chosen\" fill"
+
+sed -i '/^output\s\+\*\s\+bg.*/d' "$SWAY_CONFIG"
+
+echo "$new_wallpaper_command" >> "$SWAY_CONFIG"
+
+swaymsg reload

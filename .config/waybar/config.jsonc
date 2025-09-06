@@ -10,6 +10,7 @@
         "sway/window"
     ],
     "modules-right": [
+      "custom/wallpaper",
         "custom/launcher",
         "idle_inhibitor",
         "pulseaudio",
@@ -101,8 +102,8 @@
             "critical": 10
         },
         "format": "{capacity}% {icon}",
-        "format-full": "{capacity}% 󰂄",
-        "format-charging": "{capacity}% ",
+        "format-full": "{capacity}%  full",
+        "format-charging": "{capacity}% ",
         "format-plugged": "{capacity}% ",
         "format-alt": "{time} {icon}",
         "format-icons": ["", "", "", "", ""]
@@ -139,6 +140,10 @@
         "format": "󰤆",
         "tooltip": false,
         "on-click": "~/.config/waybar/powermenu"
+    },
+    "custom/wallpaper": {
+      "format": " ",
+      "on-click": "~/.config/sway/powermenu"
     },
     "pulseaudio": {
         "scroll-step": 5,
