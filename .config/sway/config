@@ -226,7 +226,8 @@ set $fm thunar
 #set $browser flatpak run com.brave.Browser
 set $browser firefox
 bindsym $mod+shift+return exec $browser
-bindsym ctrl+$mod+return exec $fm
+bindsym $mod+ctrl+return exec $fm
+bindsym $mod+ctrl+l exec foot -e lf
 bindsym $mod+return exec $term
 bindsym $mod+space exec $menu
 bindsym $mod+g exec gammastep -O 3000
@@ -243,4 +244,4 @@ bindsym $mod+shift+w exec ~/.config/sway/powermenu
 include /etc/sway/config-vars.d/*
 include /etc/sway/config.d/*
 # Set the Wallpaper:
-output * bg "/home/dabat/.config/sway/Wallpapers/bat30.jpg" fill
+output * bg "/home/dabat/.config/sway/Wallpapers/bat31.jpeg" fill

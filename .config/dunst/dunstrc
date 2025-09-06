@@ -9,12 +9,15 @@
     # The default frame color
     frame_color = "#5e81ac"
     frame_width = 2
+    icon_theme = "Arc"
     enable_recursive_icon_lookup = true
     # The separator color between notifications
     separator_color = frame
 
     # corner radius for notifications
     corner_radius = 2
+    min_icon_size = 32
+    max_icon_size = 128
 
 [urgency_low]
     # background color for low urgency notifications
