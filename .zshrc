@@ -1,7 +1,6 @@
 HISTSIZE=10000
 SAVEHIST=10000
 HISTFILE=~/.zsh_history
-alias sudo='doas'
 # Load colors and set the prompt
 autoload -U colors && colors
 PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
@@ -9,7 +8,10 @@ PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magent
 # General aliases
 alias ff="~/.config/fetch"
 alias ls='ls --color=auto'
+alias ll='ls -lah --color=auto'
 alias gpp='g++'
+alias startdocker="sudo ln -s /etc/sv/docker /var/service && sudo sv up docker"
+alias stopdocker="sudo rm /var/service/docker && sudo sv down docker"
 # Neovim config aliases
 alias editsway='nvim ~/.config/sway/config'
 alias editwaybar='nvim ~/.config/waybar/config.jsonc'
