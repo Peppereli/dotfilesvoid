@@ -1,6 +1,6 @@
 {
     "position": "bottom",
-    "height": 26,
+    "height": 28,
     "modules-left": [
         "sway/workspaces",
         "sway/mode",
@@ -10,6 +10,7 @@
         "sway/window"
     ],
     "modules-right": [
+      "custom/wallpaper",
         "custom/launcher",
         "idle_inhibitor",
         "pulseaudio",
@@ -110,6 +111,25 @@
     "battery#bat2": {
         "bat": "BAT2"
     },
+    "power-profiles-daemon": {
+        "format": "{icon}",
+        "tooltip": true,
+        "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+        "format-icons": {
+            "default": "",
+            "performance": "",
+            "balanced": "",
+            "power-saver": ""
+        }
+    },
+    "network": {
+        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": "{ipaddr}/{cidr} ",
+        "tooltip-format": "{ifname} via {gwaddr} ",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ⚠",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
     "custom/launcher": {
         "format": "󰮫",
         "tooltip": true,
@@ -120,6 +140,10 @@
         "format": "󰤆",
         "tooltip": false,
         "on-click": "~/.config/waybar/powermenu"
+    },
+    "custom/wallpaper": {
+      "format": " ",
+      "on-click": "~/.config/sway/powermenu"
     },
     "pulseaudio": {
         "scroll-step": 5,
@@ -138,6 +162,7 @@
             "car": "",
             "default": ["", "", ""]
         },
+        "on-click": "pavucontrol",
         "on-click": "foot -e zsh -c 'pulsemixer; read -n 1 -s -r -p'"
     }
 }

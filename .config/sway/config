@@ -40,7 +40,7 @@ set $background #516380
 set $color_urgent #FA5F55
 set $text_color #ffffff
 set $title_bg_unfocused #36454F
-set $title_outline_active #516380 
+set $title_outline_active #667b9e
 set $title_outline_unfocused #000000
 # Set Colors:           Border                   Background          Text          Indicator             Child Border
 client.background       $background
@@ -244,4 +244,4 @@ bindsym $mod+shift+w exec ~/.config/sway/powermenu
 include /etc/sway/config-vars.d/*
 include /etc/sway/config.d/*
 # Set the Wallpaper:
-output * bg "/home/dabat/.config/sway/Wallpapers/bat31.jpeg" fill
+output * bg "/home/dabat/.config/sway/Wallpapers/bat30.jpg" fill

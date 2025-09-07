@@ -11,19 +11,17 @@ alias ls='ls --color=auto'
 alias ll='ls -lah --color=auto'
 alias gpp='g++'
 alias startdocker="sudo ln -s /etc/sv/docker /var/service && sudo sv up docker"
-alias stopdocker="sudo rm /var/service/docker && sudo sv down docker"
+alias stopdocker="sudo rm /var/service/docker"
 # Neovim config aliases
 alias editsway='nvim ~/.config/sway/config'
 alias editwaybar='nvim ~/.config/waybar/config.jsonc'
 alias editwaycss='nvim ~/.config/waybar/style.css'
-# --- Autocompletion ---
 # Basic auto/tab complete
 autoload -U compinit
 zmodload zsh/complist
 compinit
 zstyle ':completion:*' menu select
 _comp_options+=(globdots)
-# --- Vi Mode and Cursor ---
 # Enable Vi mode
 bindkey -v
 export KEYTIMEOUT=1
@@ -59,7 +57,6 @@ l () {
     fi
 }
 bindkey -s '^o' 'lfcd\n'
-# --- Plugins ---
 # Source plugins, suppressing errors
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
