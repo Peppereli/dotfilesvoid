@@ -91,7 +91,7 @@ button:hover {
 * Workspaces
 */
 #workspaces button {
-    padding: 0 2px;
+    padding: 0 3px;
     background-color: transparent;
     color: #ffffff;
 }
@@ -107,6 +107,19 @@ button:hover {
 
 #workspaces button.urgent {
     background-color: #DC143C;
+}
+
+#window,
+#workspaces {
+    margin: 0 4px;
+}
+
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 0;
+}
+
+.modules-right > widget:last-child > #workspaces {
+    margin-right: 0;
 }
 
 #window,

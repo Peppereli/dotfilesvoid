@@ -27,7 +27,7 @@ input type:touchpad {
 #========================#
 # Appearance and Theming #
 #========================#
-font pango:Inter 11
+font pango:Inter 12
 
 exec_always {
     xrdb -load ~/.Xdefaults
@@ -230,7 +230,7 @@ bindsym $mod+ctrl+return exec $fm
 bindsym $mod+ctrl+l exec foot -e lf
 bindsym $mod+return exec $term
 bindsym $mod+space exec $menu
-bindsym $mod+g exec gammastep -O 3000
+bindsym $mod+g exec gammastep -O 2000
 bindsym $mod+x exec pkill gammastep
 bindsym $mod+q kill
 # Screenshot shortcuts:
@@ -244,4 +244,4 @@ bindsym $mod+shift+w exec ~/.config/sway/powermenu
 include /etc/sway/config-vars.d/*
 include /etc/sway/config.d/*
 # Set the Wallpaper:
-output * bg "/home/dabat/.config/sway/Wallpapers/bat30.jpg" fill
+output * bg "/home/dabat/.config/sway/Wallpapers/bat31.jpeg" fill
