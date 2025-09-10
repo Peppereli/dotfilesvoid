@@ -20,8 +20,9 @@
         "battery",
         "battery#bat2",
         "keyboard-state",
-        "sway/language",
         "tray",
+        "network",
+        "sway/language",
         "clock",
         "custom/calendar",
         "custom/power"
@@ -62,8 +63,8 @@
         }
     },
     "tray": {
-        "icon-size": 20,
-        "spacing": 10
+        "icon-size": 18,
+        "spacing": 2
     },
     "clock": {
         "format": "{:%H:%M}",
@@ -120,6 +121,16 @@
         "format": "󰤆",
         "tooltip": false,
         "on-click": "~/.config/waybar/powermenu"
+    },
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": "{essid} ({signalStrength}%) 󰖩",
+        "format-ethernet": "{ipaddr}/{cidr} 󰈀",
+        "tooltip-format": "{ifname} via {gwaddr}",
+        "format-linked": "{ifname} (No IP)",
+        "format-disconnected": "Disconnected 󰲛",
+        //"format-alt": "{ifname}: {ipaddr}/{cidr}"
+        "on-click": "foot -e zsh -c 'sleep 0.02; nmtui'"
     },
     "pulseaudio": {
         "scroll-step": 5,

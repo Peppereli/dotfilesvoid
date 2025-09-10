@@ -1,9 +1,12 @@
+# Shell history
 HISTSIZE=10000
 SAVEHIST=10000
 HISTFILE=~/.zsh_history
+
 # Load colors and set the prompt
 autoload -U colors && colors
 PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
+
 # --- Aliases ---
 # General aliases
 alias sudo='doas'
@@ -18,39 +21,51 @@ alias editwaybar='nvim ~/.config/waybar/config.jsonc'
 alias editwaycss='nvim ~/.config/waybar/style.css'
 alias ytmp3="yt-dlp --extract-audio --audio-format mp3 --audio-quality 0"
 alias ytmp4='yt-dlp -f "bestvideo[height<=1080][ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best" --merge-output-format mp4'
-# Basic auto/tab complete
+
 autoload -U compinit
+zstyle ':completion:*' menu select
 zmodload zsh/complist
 compinit
-zstyle ':completion:*' menu select
-_comp_options+=(globdots)
-# Enable Vi mode
+_comp_options+=(globdots)		# Include hidden files.
+
+# vi mode
 bindkey -v
 export KEYTIMEOUT=1
-# Use Vim keys in the tab completion menu
+
+# Use vim keys in tab complete menu:
 bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
-# Custom function to change cursor shape based on vi mode
+bindkey -v '^?' backward-delete-char
+
+# Change cursor shape for different vi modes.
 function zle-keymap-select {
-  if [[ ${KEYMAP} == vicmd ]]; then
-    echo -ne '\e[1 q' # Block cursor for command mode
-  elif [[ ${KEYMAP} == main ]] || [[ ${KEYMAP} == viins ]]; then
-    echo -ne '\e[5 q' # Beam cursor for insert mode
+  if [[ ${KEYMAP} == vicmd ]] ||
+     [[ $1 = 'block' ]]; then
+    echo -ne '\e[1 q'
+  elif [[ ${KEYMAP} == main ]] ||
+       [[ ${KEYMAP} == viins ]] ||
+       [[ ${KEYMAP} = '' ]] ||
+       [[ $1 = 'beam' ]]; then
+    echo -ne '\e[5 q'
   fi
 }
-
 zle -N zle-keymap-select
-# Set initial cursor shape and update on each new prompt
-function zle-line-init {
-  zle -K viins # Ensure insert mode is the default
-  echo -ne '\e[5 q'
+zle-line-init() {
+    zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
+    echo -ne "\e[5 q"
 }
 zle -N zle-line-init
-preexec() { echo -ne '\e[5 q' ;}
+echo -ne '\e[5 q' # Use beam shape cursor on startup.
+preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
+bindkey -s '^o' 'lfcd\n'
 
-l () {
+# Edit line in vim with ctrl-e:
+autoload edit-command-line; zle -N edit-command-line
+bindkey '^e' edit-command-line
+
+lfcd () {
     tmp="$(mktemp)"
     lf -last-dir-path="$tmp" "$@"
     if [ -f "$tmp" ]; then
@@ -60,7 +75,6 @@ l () {
     fi
 }
 
-bindkey -s '^o' 'lfcd\n'
-# Source plugins, suppressing errors
+# Plugins
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null

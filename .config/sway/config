@@ -1,7 +1,6 @@
 #========================#
-#   Keyboard and Mouse   #
+#      Input Devices     #
 #========================#
-
 input type:keyboard {
     xkb_layout "us,ru,kz,ir"
     xkb_options "grp:alt_shift_toggle"
@@ -25,16 +24,18 @@ input type:touchpad {
 }
 
 #========================#
-# Appearance and Theming #
+#       UI Scaling       #
 #========================#
-font pango:Inter 12
-
 exec_always {
     xrdb -load ~/.Xdefaults
     gsettings set org.gnome.desktop.interface text-scaling-factor 1.2
     gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
 }
 
+#========================#
+# Appearance and Theming #
+#========================#
+font pango:Inter 12
 # Declare Colors:
 set $background #516380
 set $color_urgent #FA5F55
@@ -48,39 +49,52 @@ client.focused          $title_outline_active    $background         $text_color
 client.focused_inactive $title_outline_unfocused $background         $text_color   $text_color           $title_outline_unfocused
 client.unfocused        $title_outline_unfocused $title_bg_unfocused $text_color   $title_outline_active
 client.urgent           $color_urgent            $color_urgent       $color_urgent $color_urgent         $color_urgent
-# Add gaps in between all application windows:
-#gaps inner 10
-# Configure the default border:
+gaps inner 0
 default_border pixel 2
-#====================================#
-# Activate the panel                 #
-#====================================#
-# Set the waybar command for the application launcher:
 
+#====================================#
+#              Panel                 #
+#====================================#
 bar {
     swaybar_command waybar
 }
 
 #====================================#
-# Keyboard Shortcuts (Sway-specific) #
+#         Default Variables          #
 #====================================#
 set $mod Mod4
 set $alt Mod1
+set $lock 'swaylock -f -c 36454F'
+# Workspaces
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+# Applications
+#set $menu wofi --show drun  -i | xargs swaymsg exec --
+#set $browser flatpak run com.brave.Browser
+set $term foot
+set $menu rofi -show drun
+set $fm thunar
+set $browser firefox
+
+#====================================#
+# Keyboard Shortcuts (Sway-specific) #
+#====================================#
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+e exec ~/.config/sway/exit.sh
 # Screen locking (automatic, with a timeout)
-set $lock 'swaylock -f -c 36454F'
-
 exec swayidle -w \
-    timeout 60000 $lock \
+    timeout 45000 $lock \
     timeout 600 'swaymsg "output * dpms off"' \
     resume 'swaymsg "output * dpms on"' \
-    before-sleep 'swaylock -f -c 36454F'
+    before-sleep $lock
 
-# Screen locking (manual)
-bindsym $mod+Escape exec $lock
-bindsym $mod+shift+d exec "swaymsg 'output * dpms off'"
-bindsym $mod+control+d exec "swaymsg 'output * dpms on'"
 #========================================#
 # Keyboard Shortcuts (Window Management) #
 #========================================#
@@ -126,19 +140,10 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
+
 #=================================#
 # Keyboard Shortcuts (Workspaces) #
 #=================================#
-# Switch to workspace
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
 # Move between workspaces
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
@@ -159,6 +164,7 @@ bindsym $mod+Shift+6 move container to workspace $ws6
 bindsym $mod+Shift+7 move container to workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
+
 #=============================#
 # Keyboard Shortcuts (Layout) #
 #=============================#
@@ -179,6 +185,7 @@ bindsym $mod+Shift+f floating toggle
 bindsym $mod+tab focus mode_toggle
 # Move focus to the parent container
 bindsym $mod+a focus parent
+
 #=================================#
 # Keyboard Shortcuts (Scratchpad) #
 #=================================#
@@ -189,6 +196,7 @@ bindsym $mod+Shift+minus move scratchpad
 # Show the next scratchpad window or hide the focused scratchpad window.
 # If there are multiple scratchpad windows, this command cycles through them.
 bindsym $mod+minus scratchpad show
+
 #===============================#
 # Keyboard Shortcuts (Hardware) #
 #===============================#
@@ -210,26 +218,26 @@ bindsym XF86MonBrightnessDown exec brillo -U 10
 bindsym XF86MonBrightnessUp exec brillo -A 10
 bindsym $mod+F4 exec brillo -A 10
 bindsym $mod+F3 exec brillo -U 10
-# Autostart
-exec --no-startup-id nm-applet
+
+#===============================#
+#    Autostart Applications     #
+#===============================#
+#exec --no-startup-id nm-applet
 exec --no-startup-id /usr/libexec/polkit-gnome-authentication-agent-1
 exec --no-startup-id dunst
 exec --no-startup-id brillo -I
 exec --no-startup-id pipewire
+
 #=============================================#
 # Keyboard Shortcuts (launching applications) #
 #=============================================#
-#set $menu wofi --show drun  -i | xargs swaymsg exec --
-set $term foot
-set $menu rofi -show drun
-set $fm thunar
-#set $browser flatpak run com.brave.Browser
-set $browser firefox
+bindsym $mod+return exec $term
+bindsym $mod+alt+t exec $term
 bindsym $mod+shift+return exec $browser
 bindsym $mod+ctrl+return exec $fm
-bindsym $mod+ctrl+l exec foot -e lf
-bindsym $mod+return exec $term
+bindsym $mod+ctrl+l exec "$term -e zsh -c 'lf'"
 bindsym $mod+space exec $menu
+bindsym $mod+shift+n exec "$term -e zsh -c 'sleep 0.02; nmtui'"
 bindsym $mod+g exec gammastep -O 2000
 bindsym $mod+x exec pkill gammastep
 bindsym $mod+q kill
@@ -238,10 +246,15 @@ bindsym $mod+ctrl+s exec cd ~/Pictures && grim -g "$(slurp)" && thunar ~/Picture
 bindsym $mod+ctrl+f exec cd ~/Pictures && grim -g "$(slurp)"
 bindsym $mod+ctrl+g exec cd ~/Pictures && grim
 bindsym $mod+shift+w exec ~/.config/sway/powermenu
+# Screen locking (manual)
+bindsym $mod+Escape exec $lock
+bindsym $mod+shift+d exec "swaymsg 'output * dpms off'"
+bindsym $mod+control+d exec "swaymsg 'output * dpms on'"
+
 #======#
 # Misc #
 #======#
 include /etc/sway/config-vars.d/*
 include /etc/sway/config.d/*
 # Set the Wallpaper:
-output * bg "/home/dabat/.config/sway/Wallpapers/bat31.jpeg" fill
+output * bg "/home/dabat/.config/sway/Wallpapers/bat2.jpeg" fill
