@@ -14,17 +14,16 @@
         "idle_inhibitor",
         "pulseaudio",
         "cpu",
-        "memory",
         "temperature",
+        "memory",
         "backlight",
         "battery",
         "battery#bat2",
         "keyboard-state",
-        "tray",
         "network",
+        "tray",
         "sway/language",
         "clock",
-        "custom/calendar",
         "custom/power"
     ],
     "sway/workspaces": {
@@ -32,6 +31,9 @@
         "all-outputs": true,
         "warp-on-scroll": false,
         "format": "{name}"
+    },
+    "sway/window":{
+        "format": " {title} "
     },
     "keyboard-state": {
         "numlock": true,
@@ -43,6 +45,7 @@
         }
     },
     "sway/language": {
+        "format": "{flag}",
         "tooltip": false
     },
     "sway/mode": {
@@ -58,31 +61,26 @@
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
-            "activated": "",
-            "deactivated": ""
+            "activated": "[o]",
+            "deactivated": "[-]"
         }
     },
     "tray": {
-        "icon-size": 18,
-        "spacing": 2
+        "icon-size": 20,
+        "spacing": 10
     },
     "clock": {
         "format": "{:%H:%M}",
         "tooltip": true,
-        "tooltip-format": "{:%d-%m-%Y}"
-    },
-    "custom/calendar": {
-        "format": "",
-        "tooltip": true,
-        "tooltip-format": "calendar",
-        "on-click": "foot -e zsh -c 'cal -y; read -n 1 -s -r -p'"
+        "tooltip-format": "{:%d-%m-%Y}",
+                "on-click": "foot -e zsh -c 'cal -y; read -n 1 -s -r -p'"
     },
     "cpu": {
-        "format": "{usage}% ",
+        "format": "{usage}%  ",
         "tooltip": false
     },
     "memory": {
-        "format": "{}% "
+        "format": "{}%  "
     },
     "temperature": {
         "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
@@ -92,7 +90,7 @@
         "format-icons": ["", "", ""]
     },
     "backlight": {
-        "format": "{percent}% {icon}",
+        "format": "{percent}% {icon} ",
         "format-icons": ["", "", "", "", "", "", "", "", ""],
         "tooltip": false
     },
@@ -101,45 +99,50 @@
             "warning": 20,
             "critical": 10
         },
-        "format": "{capacity}% {icon}",
-        "format-full": "{capacity}%  full",
-        "format-charging": "{capacity}% ",
-        "format-plugged": "{capacity}% ",
-        "format-alt": "{time} {icon}",
+        "events": {
+        "on-discharging-warning": "notify-send -u normal 'BATTERY WARNING' 'Battery at 20%! Please plug in your device to minimize damage!'",
+        "on-discharging-critical": "notify-send -u critical 'BATTERY CRITICAL' 'Battery at 10%! PLUG IN YOUR DEVICE NOW!'",
+        "on-charging-80": "notify-send -u normal 'Battery Good!' 'Please unplug the battery to minimize damage'",
+        "on-charging-100": "notify-send -u normal 'Battery Full!' 'Battery is fully charged.'"
+        },
+        "format": "{capacity}% {icon} ",
+        "format-full": "{capacity}% full",
+        "format-charging": "{capacity}%  ",
+        "format-plugged": "{capacity}%  ",
         "format-icons": ["", "", "", "", ""]
     },
     "battery#bat2": {
         "bat": "BAT2"
     },
     "custom/launcher": {
-        "format": "󰮫",
+        "format": "[menu]",
         "tooltip": true,
         "tooltip-format": "Launch Rofi",
         "on-click": "rofi -show drun"
     },
     "custom/power": {
-        "format": "󰤆",
+        "format": "󰐦",
         "tooltip": false,
         "on-click": "~/.config/waybar/powermenu"
     },
     "network": {
-        // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "{essid} ({signalStrength}%) 󰖩",
-        "format-ethernet": "{ipaddr}/{cidr} 󰈀",
+        //"interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": "{essid} ({signalStrength}%) 󰖩 ",
+        "format-ethernet": "{ipaddr}/{cidr} 󰈀 ",
         "tooltip-format": "{ifname} via {gwaddr}",
         "format-linked": "{ifname} (No IP)",
-        "format-disconnected": "Disconnected 󰲛",
+        "format-disconnected": "Disconnected 󰲛 ",
         //"format-alt": "{ifname}: {ipaddr}/{cidr}"
-        "on-click": "foot -e zsh -c 'sleep 0.02; nmtui'"
+        "on-click": "foot -e zsh -c 'sleep 0.04; nmtui'"
     },
     "pulseaudio": {
         "scroll-step": 5,
         "format": "{volume}% {icon} {format_source}",
         "format-bluetooth": "{volume}% {icon} {format_source}",
         "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": " {format_source}",
-        "format-source": "{volume}% ",
-        "format-source-muted": "",
+        "format-muted": "(mute) {format_source}",
+        "format-source": "{volume}%[mic]",
+        "format-source-muted": " ",
         "format-icons": {
             "headphone": "",
             "hands-free": "",
@@ -149,6 +152,6 @@
             "car": "",
             "default": ["", "", ""]
         },
-        "on-click": "foot -e zsh -c 'pulsemixer; read -n 1 -s -r -p'"
+        "on-click": "foot -e zsh -c 'pulsemixer'"
     }
 }

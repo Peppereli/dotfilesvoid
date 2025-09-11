@@ -1,6 +1,6 @@
 @theme "~/.config/rofi/theme.rasi"
 configuration {
-    font: "Inter 14";
+    font: "Monospace 14";
     show-icons: true;
     display-window: "Window";
     display-drun: "Search";
