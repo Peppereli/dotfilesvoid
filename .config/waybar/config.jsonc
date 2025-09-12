@@ -132,7 +132,7 @@
         "format-linked": "{ifname} (No IP)",
         "format-disconnected": "Disconnected 󰲛 ",
         //"format-alt": "{ifname}: {ipaddr}/{cidr}"
-        "on-click": "foot -e zsh -c 'sleep 0.04; nmtui'"
+        "on-click": "foot -e zsh -c 'sleep 0.05; nmtui'"
     },
     "custom/weather":{
       "format": "w",

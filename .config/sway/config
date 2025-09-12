@@ -84,7 +84,7 @@ set $menu rofi -show drun
 set $fm thunar
 set $browser firefox
 set $music "$term -e zsh -c cmus"
-set $network "$term -e zsh -c 'sleep 0.04; nmtui'"
+set $network "$term -e zsh -c 'sleep 0.05; nmtui'"
 set $lf "$term -e zsh -c lf"
 set $lock 'swaylock -f -c 36454F'
 
