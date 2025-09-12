@@ -33,7 +33,7 @@
     background-color: transparent;
 }
 window {
-    background-color: rgba(40, 40, 43, 90%);
+    background-color: rgba(40, 40, 43, 80%);
     border: 2px;
     padding: 5px;
 }

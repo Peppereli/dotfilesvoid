@@ -63,25 +63,24 @@ button:hover {
 #idle_inhibitor,
 #scratchpad,
 #power-profiles-daemon,
+#custom-weather,
+#custom-power,
 #mpd {
-   /* border-right: 2px solid #B2BEB5; */
+    border: 1px solid #ffffff;
     padding: 0 5px;
     color: #ffffff;
 }
-#custom-power{
-  min-width: 24px;
+#language{
+  min-width:20px;
 }
-#language {
-    color: #ffffff;
-    margin: 0;
-    min-width: 24px;
-}
+
 /* Grouping hover effects */
 #pulseaudio:hover,
 #network:hover,
 #idle_inhibitor:hover,
 #custom-power:hover,
 #clock:hover,
+#custom-weather:hover,
 #custom-launcher:hover {
     background: rgba(0, 0, 0, 0.4);
 }

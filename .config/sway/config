@@ -35,7 +35,7 @@ exec_always {
 #========================#
 # Appearance and Theming #
 #========================#
-font pango:monospace 12
+font pango:monospace 10
 # Declare Colors:
 set $background #516380
 set $color_urgent #FA5F55
@@ -64,7 +64,6 @@ bar {
 #===================#
 set $mod Mod4
 set $alt Mod1
-set $lock 'swaylock -f -c 36454F'
 # Workspaces
 set $ws1 "1"
 set $ws2 "2"
@@ -76,7 +75,9 @@ set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 # Applications
+# Uncomment if you use wofi instead of rofi:
 #set $menu wofi --show drun  -i | xargs swaymsg exec --
+# Uncomment if you use the Flatpak version of Brave:
 #set $browser flatpak run com.brave.Browser
 set $term foot
 set $menu rofi -show drun
@@ -85,6 +86,7 @@ set $browser firefox
 set $music "$term -e zsh -c cmus"
 set $network "$term -e zsh -c 'sleep 0.04; nmtui'"
 set $lf "$term -e zsh -c lf"
+set $lock 'swaylock -f -c 36454F'
 
 #====================================#
 # Keyboard Shortcuts (Sway-specific) #
@@ -203,22 +205,23 @@ bindsym $mod+minus scratchpad show
 #===============================#
 # Keyboard Shortcuts (Hardware) #
 #===============================#
-# Volume Controls
+# Volume Controls (Laptop)
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
-# Volume Controls (with Mod key)
+# Volume Controls (External keyboard)
 bindsym $mod+F6 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym $mod+F5 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym $mod+F7 exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym $mod+F8 exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
-# Shutdown and reboot 
+# Shutdown and Reboot 
 bindsym $mod+Shift+F2 exec --no-startup-id "brillo -O && loginctl reboot"
 bindsym $mod+Shift+F1 exec --no-startup-id "brillo -O && loginctl poweroff"
-# Brightness
+# Brightness (Laptop)
 bindsym XF86MonBrightnessDown exec brillo -U 10
 bindsym XF86MonBrightnessUp exec brillo -A 10
+# Brightness (External keyboard)
 bindsym $mod+F4 exec brillo -A 10
 bindsym $mod+F3 exec brillo -U 10
 
@@ -229,7 +232,6 @@ exec --no-startup-id /usr/libexec/polkit-gnome-authentication-agent-1
 exec --no-startup-id dunst
 exec --no-startup-id brillo -I
 exec --no-startup-id pipewire
-exec_always --no-startup-id ~/.config/sway/bat
 
 #=============================================#
 # Keyboard Shortcuts (launching applications) #

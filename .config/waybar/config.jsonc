@@ -2,15 +2,14 @@
     "position": "bottom",
     "height": 26,
     "modules-left": [
-        "sway/workspaces",
-        "sway/mode",
-        "sway/scratchpad"
+        "sway/workspaces", "sway/mode", "sway/scratchpad"
     ],
     "modules-center": [
         "sway/window"
     ],
     "modules-right": [
         "custom/launcher",
+        "custom/weather",
         "idle_inhibitor",
         "pulseaudio",
         "cpu",
@@ -61,8 +60,8 @@
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
-            "activated": "[o]",
-            "deactivated": "[-]"
+            "activated": "o",
+            "deactivated": "-"
         }
     },
     "tray": {
@@ -97,11 +96,11 @@
     "battery": {
         "states": {
             "warning": 20,
-            "critical": 10
+            "critical": 15
         },
         "events": {
         "on-discharging-warning": "notify-send -u normal 'BATTERY WARNING' 'Battery at 20%! Please plug in your device to minimize damage!'",
-        "on-discharging-critical": "notify-send -u critical 'BATTERY CRITICAL' 'Battery at 10%! PLUG IN YOUR DEVICE NOW!'",
+        "on-discharging-critical": "notify-send -u critical 'BATTERY CRITICAL' 'Battery at 15%! PLUG IN YOUR DEVICE NOW!'",
         "on-charging-80": "notify-send -u normal 'Battery Good!' 'Please unplug the battery to minimize damage'",
         "on-charging-100": "notify-send -u normal 'Battery Full!' 'Battery is fully charged.'"
         },
@@ -115,9 +114,9 @@
         "bat": "BAT2"
     },
     "custom/launcher": {
-        "format": "[menu]",
+        "format": "m",
         "tooltip": true,
-        "tooltip-format": "Launch Rofi",
+        "tooltip-format": "Menu",
         "on-click": "rofi -show drun"
     },
     "custom/power": {
@@ -135,13 +134,18 @@
         //"format-alt": "{ifname}: {ipaddr}/{cidr}"
         "on-click": "foot -e zsh -c 'sleep 0.04; nmtui'"
     },
+    "custom/weather":{
+      "format": "w",
+      "tooltip-format":"Weather",
+      "on-click": "foot -e zsh -c 'curl wttr.in/almaty; read -n 1 -s -r -p'"
+    },
     "pulseaudio": {
         "scroll-step": 5,
         "format": "{volume}% {icon} {format_source}",
         "format-bluetooth": "{volume}% {icon} {format_source}",
         "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": "(mute) {format_source}",
-        "format-source": "{volume}%[mic]",
+        "format-muted": " {format_source}",
+        "format-source": "{volume}% ",
         "format-source-muted": " ",
         "format-icons": {
             "headphone": "",

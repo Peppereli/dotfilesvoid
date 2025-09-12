@@ -79,11 +79,6 @@ g.maplocalleader = ' '
 local map = vim.keymap.set
 local map_opts = { silent = true, noremap = true }
 
-map('i', '(', '()<Left>', map_opts)
-map('i', '"', '""<Left>', map_opts)
-map('i', '<', '<><Left>', map_opts)
-map('i', '{', '{}<Left>', map_opts)
-map('i', '[', '[]<Left>', map_opts)
 map('n', '<leader>c', ':nohlsearch<CR>')
 map('n', 'n', 'nzzzv')
 map('n', 'N', 'Nzzzv')
