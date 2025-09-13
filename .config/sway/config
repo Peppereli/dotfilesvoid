@@ -50,7 +50,7 @@ client.focused_inactive $title_outline_unfocused $background         $text_color
 client.unfocused        $title_outline_unfocused $title_bg_unfocused $text_color   $title_outline_active
 client.urgent           $color_urgent            $color_urgent       $color_urgent $color_urgent         $color_urgent
 gaps inner 0
-default_border pixel 2
+default_border pixel 3
 
 #=======#
 # Panel #
@@ -84,7 +84,7 @@ set $menu rofi -show drun
 set $fm thunar
 set $browser firefox
 set $music "$term -e zsh -c cmus"
-set $network "$term -e zsh -c 'sleep 0.05; nmtui'"
+set $network "$term -e zsh -c 'sleep 0.05;'NEWT_COLORS='root=,black nmtui'"
 set $lf "$term -e zsh -c lf"
 set $lock 'swaylock -f -c 36454F'
 

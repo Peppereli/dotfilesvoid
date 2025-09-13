@@ -2,7 +2,7 @@
 * Global settings
 */
 * {
-    font-family: Monospace, Nerd Fonts Symbols;
+    font-family: Fira Code, Nerd Fonts Symbols;
     font-size: 16px;
 }
 
@@ -49,29 +49,26 @@ button:hover {
 #battery,
 #cpu,
 #memory,
-#disk,
 #temperature,
 #backlight,
 #network,
 #pulseaudio,
 #wireplumber,
-#custom-media,
 #custom-launcher,
 #tray,
 #language,
 #mode,
+#window,
 #idle_inhibitor,
 #scratchpad,
-#power-profiles-daemon,
 #custom-weather,
-#custom-power,
-#mpd {
-    border: 1px solid #ffffff;
+#custom-power {
+    /*border: 1px solid #ffffff;*/
     padding: 0 5px;
     color: #ffffff;
 }
 #language{
-  min-width:20px;
+    min-width:20px;
 }
 
 /* Grouping hover effects */
@@ -82,7 +79,7 @@ button:hover {
 #clock:hover,
 #custom-weather:hover,
 #custom-launcher:hover {
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.5);
 }
 
 /*
@@ -104,7 +101,7 @@ button:hover {
 }
 
 #workspaces button.urgent {
-    background-color: #DC143C;
+    background-color: #880808;
 }
 
 #window,
@@ -132,8 +129,11 @@ button:hover {
     -gtk-icon-effect: highlight;
     background-color: #eb4d4b;
 }
-#keyboard-state {
-    background: #97e1ad;
-    color: #000000;
-    min-width: 18px;
+
+#battery.warning {
+    background-color: #CC5500;
+}
+
+#battery.critical {
+    background-color: #880808;
 }

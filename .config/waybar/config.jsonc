@@ -32,7 +32,7 @@
         "format": "{name}"
     },
     "sway/window":{
-        "format": " {title} "
+        "format": "{title}"
     },
     "keyboard-state": {
         "numlock": true,
@@ -65,7 +65,7 @@
         }
     },
     "tray": {
-        "icon-size": 20,
+        "icon-size": 18,
         "spacing": 10
     },
     "clock": {
@@ -75,11 +75,11 @@
                 "on-click": "foot -e zsh -c 'cal -y; read -n 1 -s -r -p'"
     },
     "cpu": {
-        "format": "{usage}%  ",
+        "format": "{usage}% 󰘚",
         "tooltip": false
     },
     "memory": {
-        "format": "{}%  "
+        "format": "{}%  "
     },
     "temperature": {
         "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
@@ -99,8 +99,8 @@
             "critical": 15
         },
         "events": {
-        "on-discharging-warning": "notify-send -u normal 'BATTERY WARNING' 'Battery at 20%! Please plug in your device to minimize damage!'",
-        "on-discharging-critical": "notify-send -u critical 'BATTERY CRITICAL' 'Battery at 15%! PLUG IN YOUR DEVICE NOW!'",
+        "on-discharging-warning": "notify-send -u normal 'BATTERY WARNING' 'Please plug in your device to minimize damage!'",
+        "on-discharging-critical": "notify-send -u critical 'BATTERY CRITICAL' 'PLUG IN YOUR DEVICE NOW!'",
         "on-charging-80": "notify-send -u normal 'Battery Good!' 'Please unplug the battery to minimize damage'",
         "on-charging-100": "notify-send -u normal 'Battery Full!' 'Battery is fully charged.'"
         },
@@ -132,7 +132,7 @@
         "format-linked": "{ifname} (No IP)",
         "format-disconnected": "Disconnected 󰲛 ",
         //"format-alt": "{ifname}: {ipaddr}/{cidr}"
-        "on-click": "foot -e zsh -c 'sleep 0.05; nmtui'"
+        "on-click": "foot -e zsh -c 'sleep 0.05;'NEWT_COLORS='root=,black nmtui'"
     },
     "custom/weather":{
       "format": "w",

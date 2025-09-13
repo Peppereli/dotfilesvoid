@@ -2,25 +2,10 @@
 HISTSIZE=10000
 SAVEHIST=10000
 HISTFILE=~/.zsh_history
-
 # Load colors and set the prompt
 autoload -U colors && colors
 PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
-
-# --- Aliases ---
-# General aliases
-alias sudo='doas'
-alias ff="~/.config/fetch"
-alias ls='ls --color=auto'
-alias ll='ls -lah --color=auto'
-alias gpp='g++'
-alias startdocker="sudo ln -s /etc/sv/docker /var/service && sudo sv up docker"
-alias stopdocker="sudo rm /var/service/docker"
-alias editsway='nvim ~/.config/sway/config'
-alias editwaybar='nvim ~/.config/waybar/config.jsonc'
-alias editwaycss='nvim ~/.config/waybar/style.css'
-alias ytmp3="yt-dlp --extract-audio --audio-format mp3 --audio-quality 0"
-alias ytmp4='yt-dlp -f "bestvideo[height<=1080][ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best" --merge-output-format mp4'
+export NEWT_COLORS='root=,black'
 
 autoload -U compinit
 zstyle ':completion:*' menu select
@@ -31,7 +16,6 @@ _comp_options+=(globdots)		# Include hidden files.
 # vi mode
 bindkey -v
 export KEYTIMEOUT=1
-
 # Use vim keys in tab complete menu:
 bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'k' vi-up-line-or-history
@@ -51,11 +35,13 @@ function zle-keymap-select {
     echo -ne '\e[5 q'
   fi
 }
+
 zle -N zle-keymap-select
 zle-line-init() {
     zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
     echo -ne "\e[5 q"
 }
+
 zle -N zle-line-init
 echo -ne '\e[5 q' # Use beam shape cursor on startup.
 preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
@@ -74,6 +60,20 @@ lfcd () {
         [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
     fi
 }
+
+# --- Aliases ---
+alias sudo='doas'
+alias ff="~/.config/fetch"
+alias ls='ls --color=auto'
+alias ll='ls -lah --color=auto'
+alias gpp='g++'
+alias startdocker="sudo ln -s /etc/sv/docker /var/service && sudo sv up docker"
+alias stopdocker="sudo rm /var/service/docker"
+alias editsway='nvim ~/.config/sway/config'
+alias editwaybar='nvim ~/.config/waybar/config.jsonc'
+alias editwaycss='nvim ~/.config/waybar/style.css'
+alias ytmp3="yt-dlp --extract-audio --audio-format mp3 --audio-quality 0"
+alias ytmp4='yt-dlp -f "bestvideo[height<=1080][ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best" --merge-output-format mp4'
 
 # Plugins
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
