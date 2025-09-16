@@ -1,6 +1,6 @@
 @theme "~/.config/rofi/theme.rasi"
 configuration {
-    font: "Fira Code Medium 14";
+    font: "JetBrains Mono Nerd Font 14";
     show-icons: true;
     display-window: "Window";
     display-drun: "Search";

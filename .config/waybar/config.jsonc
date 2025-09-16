@@ -5,7 +5,7 @@
         "sway/workspaces", "sway/mode", "sway/scratchpad"
     ],
     "modules-center": [
-        "sway/window"
+      "sway/window"
     ],
     "modules-right": [
         "custom/launcher",
@@ -95,7 +95,7 @@
     },
     "battery": {
         "states": {
-            "warning": 20,
+            "warning": 25,
             "critical": 15
         },
         "events": {
@@ -105,9 +105,9 @@
         "on-charging-100": "notify-send -u normal 'Battery Full!' 'Battery is fully charged.'"
         },
         "format": "{capacity}% {icon} ",
-        "format-full": "{capacity}% full",
-        "format-charging": "{capacity}%  ",
-        "format-plugged": "{capacity}%  ",
+        "format-full": "{capacity}%  full",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ",
         "format-icons": ["", "", "", "", ""]
     },
     "battery#bat2": {

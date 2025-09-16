@@ -63,7 +63,7 @@ lfcd () {
 
 # --- Aliases ---
 alias sudo='doas'
-alias ff="~/.config/fetch"
+alias ff="~/.config/bloatfetch"
 alias ls='ls --color=auto'
 alias ll='ls -lah --color=auto'
 alias gpp='g++'

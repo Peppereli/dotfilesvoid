@@ -36,9 +36,9 @@ map ` !true
 
 map x :cut
 # dedicated keys for file opener actions
-map o &mimeopen $f
+#map o &mimeopen $f
 map O $mimeopen --ask $f
-map d delete
+map D delete
 map b ${{
     case "$f" in
         *.cbz|*.cbr)
@@ -72,7 +72,7 @@ cmd delete ${{
 
 # mkdir command. See wiki if you want it to select created dir
 map a :push %mkdir<space>
-map n :push %touch<space>
+map m :push %touch<space>
 # define a custom 'rename' command without prompt for overwrite
 cmd rename %[ -e $1 ] && printf "file exists" || mv $f $1
 map r push :rename<space>
@@ -86,7 +86,7 @@ cmd trash %set -f; mv -t ~/.trash $fx
 
 # use '<delete>' key for either 'trash' or 'delete' command
 map <delete> trash
-
+map o extract
 # extract the current file with the right command
 # (xkcd link: https://xkcd.com/1168/)
 cmd extract ${{

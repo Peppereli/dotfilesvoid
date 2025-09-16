@@ -35,7 +35,7 @@ exec_always {
 #========================#
 # Appearance and Theming #
 #========================#
-font pango:monospace 10
+font pango:jetbrains mono nerd font 10
 # Declare Colors:
 set $background #516380
 set $color_urgent #FA5F55
@@ -50,7 +50,7 @@ client.focused_inactive $title_outline_unfocused $background         $text_color
 client.unfocused        $title_outline_unfocused $title_bg_unfocused $text_color   $title_outline_active
 client.urgent           $color_urgent            $color_urgent       $color_urgent $color_urgent         $color_urgent
 gaps inner 0
-default_border pixel 3
+default_border pixel 2
 
 #=======#
 # Panel #
@@ -75,19 +75,22 @@ set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 # Applications
+set $menu rofi -show drun
 # Uncomment if you use wofi instead of rofi:
 #set $menu wofi --show drun  -i | xargs swaymsg exec --
-# Uncomment if you use the Flatpak version of Brave:
-#set $browser flatpak run com.brave.Browser
 set $term foot
-set $menu rofi -show drun
+# Uncomment if you use alacritty instead:
+#set $term alacritty
 set $fm thunar
 set $browser firefox
+# Uncomment if you use the flatpak version of Brave:
+set $browser2 flatpak run com.brave.Browser
 set $music "$term -e zsh -c cmus"
 set $network "$term -e zsh -c 'sleep 0.05;'NEWT_COLORS='root=,black nmtui'"
-set $lf "$term -e zsh -c lf"
-set $lock 'swaylock -f -c 36454F'
-
+# Secondary file manager:
+set $fm2 "$term -e zsh -c lf"
+set $lock "swaylock -f -c 36454F"
+set $top "$term -e zsh -c 'sleep 0.01; btop'"
 #====================================#
 # Keyboard Shortcuts (Sway-specific) #
 #====================================#
@@ -194,8 +197,6 @@ bindsym $mod+a focus parent
 #=================================#
 # Keyboard Shortcuts (Scratchpad) #
 #=================================#
-# Sway has a "scratchpad", which is a bag of holding for windows.
-# You can send windows there and get them back later.
 # Move the currently focused window to the scratchpad
 bindsym $mod+Shift+minus move scratchpad
 # Show the next scratchpad window or hide the focused scratchpad window.
@@ -237,26 +238,28 @@ exec --no-startup-id pipewire
 # Keyboard Shortcuts (launching applications) #
 #=============================================#
 bindsym $mod+return exec $term
-bindsym $mod+alt+t exec $term
+bindsym $mod+t exec $term
 bindsym $mod+shift+return exec $browser
+bindsym $mod+ctrl+b exec $browser2
 bindsym $mod+ctrl+return exec $fm
-bindsym $mod+ctrl+l exec $lf
+bindsym $mod+ctrl+l exec $fm2
 bindsym $mod+space exec $menu
 bindsym $mod+shift+m exec $music
 bindsym $mod+shift+n exec $network
-bindsym $mod+g exec gammastep -O 2000
+bindsym $mod+shift+b exec $top
+bindsym $mod+g exec gammastep -O 1500
 bindsym $mod+x exec pkill gammastep
-bindsym $mod+q kill
-# Screenshot shortcuts:
+# Screenshot shortcuts
 bindsym $mod+ctrl+s exec cd ~/Pictures && grim -g "$(slurp)" && thunar ~/Pictures
-bindsym $mod+ctrl+f exec cd ~/Pictures && grim -g "$(slurp)"
-bindsym $mod+ctrl+g exec cd ~/Pictures && grim
+bindsym $mod+ctrl+f exec cd ~/Pictures && grim -g "$(slurp)" && notify-send 'Screenshot captured!'
+bindsym $mod+ctrl+g exec cd ~/Pictures && grim && notify-send 'Screenshot captured!'
 bindsym $mod+shift+w exec ~/.config/sway/powermenu
 # Screen locking (manual)
 bindsym $mod+Escape exec $lock
 bindsym $mod+shift+d exec "swaymsg 'output * dpms off'"
-bindsym $mod+control+d exec "swaymsg 'output * dpms on'"
-
+bindsym $mod+ctrl+d exec "swaymsg 'output * dpms on'"
+# Quit window:
+bindsym $mod+q kill
 #======#
 # Misc #
 #======#

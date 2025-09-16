@@ -68,7 +68,7 @@ element {
 element-text {
     background-color: inherit;
     text-color:       inherit;
-    padding: 2px 0px 0px 8px;
+    padding: 4px 0px 0px 8px;
 }
 element.normal.normal {
     background-color: @normal-background;

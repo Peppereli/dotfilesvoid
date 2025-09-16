@@ -2,7 +2,7 @@
 * Global settings
 */
 * {
-    font-family: Fira Code, Nerd Fonts Symbols;
+    font-family: JetBrains Mono Nerd Font;
     font-size: 16px;
 }
 
@@ -10,8 +10,8 @@
 * Waybar main window
 */
 window#waybar {
-    background-color: rgba(43, 48, 59, 0.8);
-    border-bottom: 3px rgba(43, 48, 59, 0.8);
+    background-color: rgba(40, 40, 43, 0.9);
+    border-bottom: 3px rgba(43, 48, 59, 0.9);
     color: #ffffff;
     transition: background-color .5s;
 }
@@ -58,19 +58,20 @@ button:hover {
 #tray,
 #language,
 #mode,
-#window,
 #idle_inhibitor,
 #scratchpad,
 #custom-weather,
 #custom-power {
     /*border: 1px solid #ffffff;*/
-    padding: 0 5px;
+    padding: 0 6px;
     color: #ffffff;
 }
 #language{
     min-width:20px;
 }
-
+#window{
+  padding: 0 10px;
+}
 /* Grouping hover effects */
 #pulseaudio:hover,
 #network:hover,
@@ -79,7 +80,7 @@ button:hover {
 #clock:hover,
 #custom-weather:hover,
 #custom-launcher:hover {
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.8);
 }
 
 /*
