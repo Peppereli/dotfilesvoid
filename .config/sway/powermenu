@@ -3,7 +3,7 @@
 SWAY_CONFIG="$HOME/.config/sway/config"
 WALLPAPER_DIR="$HOME/.config/sway/Wallpapers"
 
-chosen=$(ls "$WALLPAPER_DIR" | rofi -dmenu -i -p "Choose Wallpaper" -theme-str '@import "theme.rasi"')
+chosen=$(ls "$WALLPAPER_DIR" | fuzzel --dmenu "Choose Wallpaper")
 
 # Check if a wallpaper was selected.
 if [ -z "$chosen" ]; then

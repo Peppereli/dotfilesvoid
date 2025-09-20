@@ -30,6 +30,7 @@ exec_always {
     xrdb -load ~/.Xdefaults
     gsettings set org.gnome.desktop.interface text-scaling-factor 1.2
     gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
+    brillo -O
 }
 
 #========================#
@@ -75,27 +76,35 @@ set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 # Applications
-set $menu rofi -show drun
-# Uncomment if you use wofi instead of rofi:
-#set $menu wofi --show drun  -i | xargs swaymsg exec --
 set $term foot
-# Uncomment if you use alacritty instead:
-#set $term alacritty
+set $menu fuzzel --width 32 -r0
 set $fm thunar
+set $fm2 "$term -e zsh -c lf"
 set $browser firefox
-# Uncomment if you use the flatpak version of Brave:
 set $browser2 flatpak run com.brave.Browser
 set $music "$term -e zsh -c cmus"
 set $network "$term -e zsh -c 'sleep 0.05;'NEWT_COLORS='root=,black nmtui'"
-# Secondary file manager:
-set $fm2 "$term -e zsh -c lf"
 set $lock "swaylock -f -c 36454F"
 set $top "$term -e zsh -c 'sleep 0.01; btop'"
+set $exit "exit: [s]leep, [p]oweroff, [r]eboot, [l]ogout, [w]indows"
 #====================================#
 # Keyboard Shortcuts (Sway-specific) #
 #====================================#
+# Power options
+mode $exit {
+    bindsym --to-code {
+        s exec loginctl suspend, mode "default"
+        p exec "brillo -O && loginctl poweroff" 
+        r exec "brillo -O && loginctl reboot"
+        l exec "brillo -O && swaymsg exit"
+    
+        Return mode "default"
+        Escape mode "default"
+        $mod+Shift+e mode "default"
+    }
+}
 bindsym $mod+Shift+c reload
-bindsym $mod+Shift+e exec ~/.config/sway/exit.sh
+bindsym --to-code $mod+Shift+e mode $exit
 # Screen locking (automatic, with a timeout)
 exec swayidle -w \
     timeout 45000 $lock \
@@ -240,30 +249,30 @@ exec --no-startup-id pipewire
 bindsym $mod+return exec $term
 bindsym $mod+t exec $term
 bindsym $mod+shift+return exec $browser
-bindsym $mod+ctrl+b exec $browser2
+bindsym $mod+ctrl+b exec $top
 bindsym $mod+ctrl+return exec $fm
-bindsym $mod+ctrl+l exec $fm2
+bindsym $mod+ctrl+f exec $fm2
 bindsym $mod+space exec $menu
 bindsym $mod+shift+m exec $music
 bindsym $mod+shift+n exec $network
-bindsym $mod+shift+b exec $top
-bindsym $mod+g exec gammastep -O 1500
+bindsym $mod+shift+b exec $browser2
+bindsym $mod+g exec gammastep -O 2000
 bindsym $mod+x exec pkill gammastep
 # Screenshot shortcuts
 bindsym $mod+ctrl+s exec cd ~/Pictures && grim -g "$(slurp)" && thunar ~/Pictures
-bindsym $mod+ctrl+f exec cd ~/Pictures && grim -g "$(slurp)" && notify-send 'Screenshot captured!'
-bindsym $mod+ctrl+g exec cd ~/Pictures && grim && notify-send 'Screenshot captured!'
+bindsym $mod+ctrl+a exec cd ~/Pictures && grim -g "$(slurp)" && notify-send --expire-time=2000 'Screenshot captured!'
+bindsym $mod+ctrl+g exec cd ~/Pictures && grim && notify-send --expire-time=2000 'Screenshot captured!'
 bindsym $mod+shift+w exec ~/.config/sway/powermenu
 # Screen locking (manual)
 bindsym $mod+Escape exec $lock
 bindsym $mod+shift+d exec "swaymsg 'output * dpms off'"
 bindsym $mod+ctrl+d exec "swaymsg 'output * dpms on'"
-# Quit window:
+# Quit window
 bindsym $mod+q kill
 #======#
 # Misc #
 #======#
 include /etc/sway/config-vars.d/*
 include /etc/sway/config.d/*
-# Set the Wallpaper:
-output * bg "/home/dabat/.config/sway/Wallpapers/bat2.jpeg" fill
+# Set the Wallpaper
+output * bg "/home/dabat/.config/sway/Wallpapers/5uj6ln4oxil51.jpg" fill

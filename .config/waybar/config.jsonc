@@ -22,8 +22,7 @@
         "network",
         "tray",
         "sway/language",
-        "clock",
-        "custom/power"
+        "clock"
     ],
     "sway/workspaces": {
         "disable-scroll": false,
@@ -118,11 +117,6 @@
         "tooltip": true,
         "tooltip-format": "Menu",
         "on-click": "rofi -show drun"
-    },
-    "custom/power": {
-        "format": "󰐦",
-        "tooltip": false,
-        "on-click": "~/.config/waybar/powermenu"
     },
     "network": {
         //"interface": "wlp2*", // (Optional) To force the use of this interface

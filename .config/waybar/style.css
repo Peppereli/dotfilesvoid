@@ -60,8 +60,7 @@ button:hover {
 #mode,
 #idle_inhibitor,
 #scratchpad,
-#custom-weather,
-#custom-power {
+#custom-weather{
     /*border: 1px solid #ffffff;*/
     padding: 0 6px;
     color: #ffffff;

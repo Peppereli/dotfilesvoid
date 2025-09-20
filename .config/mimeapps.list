@@ -54,7 +54,7 @@ image/jpeg=nsxiv.desktop
 image/png=nsxiv.desktop
 
 [Added Associations]
-image/png=org.gnome.gThumb.desktop;nsxiv.desktop;
+image/png=feh.desktop;com.interversehq.qView.desktop;org.gnome.gThumb.desktop;nsxiv.desktop;
 image/GIF=org.gnome.gThumb.desktop;
 image/jpg=org.gnome.gThumb.desktop;
 image/gif=org.gnome.gThumb.desktop;
