@@ -30,13 +30,12 @@ exec_always {
     xrdb -load ~/.Xdefaults
     gsettings set org.gnome.desktop.interface text-scaling-factor 1.2
     gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
-    brillo -O
 }
 
 #========================#
 # Appearance and Theming #
 #========================#
-font pango:jetbrains mono nerd font 10
+font pango:jetbrains mono nerd font 12
 # Declare Colors:
 set $background #516380
 set $color_urgent #FA5F55
@@ -250,8 +249,8 @@ bindsym $mod+return exec $term
 bindsym $mod+t exec $term
 bindsym $mod+shift+return exec $browser
 bindsym $mod+ctrl+b exec $top
-bindsym $mod+ctrl+return exec $fm
 bindsym $mod+ctrl+f exec $fm2
+bindsym $mod+ctrl+return exec $fm
 bindsym $mod+space exec $menu
 bindsym $mod+shift+m exec $music
 bindsym $mod+shift+n exec $network
@@ -275,4 +274,4 @@ bindsym $mod+q kill
 include /etc/sway/config-vars.d/*
 include /etc/sway/config.d/*
 # Set the Wallpaper
-output * bg "/home/dabat/.config/sway/Wallpapers/5uj6ln4oxil51.jpg" fill
+output * bg "/home/dabat/.config/sway/Wallpapers/6kbyl19m7id41.jpg" fill

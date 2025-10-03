@@ -74,7 +74,8 @@ alias editwaybar='nvim ~/.config/waybar/config.jsonc'
 alias editwaycss='nvim ~/.config/waybar/style.css'
 alias ytmp3="yt-dlp --extract-audio --audio-format mp3 --audio-quality 0"
 alias ytmp4='yt-dlp -f "bestvideo[height<=1080][ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best" --merge-output-format mp4'
-
+alias androidumount='fusermount -u ~/cell/'
+alias androidmount='simple-mtpfs --device 1 ~/cell/'
 # Plugins
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null

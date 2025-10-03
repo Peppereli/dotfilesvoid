@@ -116,7 +116,7 @@
         "format": "m",
         "tooltip": true,
         "tooltip-format": "Menu",
-        "on-click": "rofi -show drun"
+        "on-click": "fuzzel -r0"
     },
     "network": {
         //"interface": "wlp2*", // (Optional) To force the use of this interface
