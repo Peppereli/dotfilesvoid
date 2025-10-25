@@ -35,7 +35,7 @@ exec_always {
 #========================#
 # Appearance and Theming #
 #========================#
-font pango:jetbrains mono nerd font 12
+font pango:jetbrains mono nerd font 11
 # Declare Colors:
 set $background #516380
 set $color_urgent #FA5F55

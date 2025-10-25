@@ -20,6 +20,10 @@ item_count=0
 [lyricwiki]
 remote-source=chartlyrics.com
 
+[pipewire]
+volume_left=100
+volume_right=100
+
 [qtui]
 entry_count_visible=TRUE
 player_height=840
