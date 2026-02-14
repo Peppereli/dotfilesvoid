@@ -1,0 +1,73 @@
+[window]
+w = 636
+h = 1050
+toolbar = True
+statusbar = True
+thumbpane = True
+
+[prefs]
+simple-bgcolor = False
+bgcolor-red = 0
+bgcolor-green = 0
+bgcolor-blue = 0
+open_all = True
+hidden = True
+use_last_dir = True
+last_dir = /home/dabat
+fixed_dir = /home/dabat
+open_mode = 0
+last_mode = 2
+listwrap_mode = 0
+slideshow_delay = 1
+slideshow_random = False
+zoomquality = 3
+quality_save = 100
+disable_screensaver = False
+slideshow_in_fullscreen = False
+confirm_delete = True
+preloading_images = True
+savemode = 2
+start_in_fullscreen = False
+thumbsize = 64
+screenshot_delay = 2
+
+[actions]
+num_actions = 4
+names[0] = Open in GIMP
+commands[0] = gimp %F &
+shortcuts[0] = <Control>e
+batch[0] = False
+names[1] = Create Thumbnail
+commands[1] = convert %F -thumbnail 150x150 %Pt_%N.jpg
+shortcuts[1] = <Alt>t
+batch[1] = False
+names[2] = Create Thumbnails
+commands[2] = convert %F -thumbnail 150x150 %Pt_%N.jpg
+shortcuts[2] = <Control><Alt>t
+batch[2] = True
+names[3] = Move to Favorites
+commands[3] = mkdir -p ~/mirage-favs; mv %F ~/mirage-favs; [NEXT]
+shortcuts[3] = <Control><Alt>f
+batch[3] = False
+
+[recent]
+num_recent = 9
+num[0] = 43
+urls[0,0] = /home/dabat/Downloads/cursive alphabet.jpeg
+num[1] = 51
+urls[1,0] = /home/dabat/docs/draft2/20260202_13h42m28s_grim.png
+num[2] = 44
+urls[2,0] = /home/dabat/pics/20260209_12h14m59s_grim.png
+num[3] = 44
+urls[3,0] = /home/dabat/pics/20260207_14h06m41s_grim.png
+num[4] = 44
+urls[4,0] = /home/dabat/pics/20260209_12h18m00s_grim.png
+num[5] = 44
+urls[5,0] = /home/dabat/pics/20260209_12h18m07s_grim.png
+num[6] = 44
+urls[6,0] = /home/dabat/pics/20260209_12h22m17s_grim.png
+num[7] = 44
+urls[7,0] = /home/dabat/pics/20260209_12h33m29s_grim.png
+num[8] = 44
+urls[8,0] = /home/dabat/pics/20260209_12h48m23s_grim.png
+

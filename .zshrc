@@ -62,6 +62,7 @@ lfcd () {
 }
 
 # --- Aliases ---
+alias rs='exec dbus-run-session sway'
 alias sudo='doas'
 alias ff="~/.config/bloatfetch"
 alias ls='ls --color=auto'

@@ -4,7 +4,6 @@
 input type:keyboard {
     xkb_layout "us,ru,kz,ir"
     xkb_options "grp:alt_shift_toggle"
-    xkb_numlock enabled
     repeat_delay 300
     repeat_rate 50
 }
@@ -79,7 +78,7 @@ set $term foot
 set $menu fuzzel --width 32 -r0
 set $fm thunar
 set $fm2 "$term -e zsh -c lf"
-set $browser firefox
+set $browser librewolf
 set $browser2 flatpak run com.brave.Browser
 set $music "$term -e zsh -c cmus"
 set $network "$term -e zsh -c 'sleep 0.05;'NEWT_COLORS='root=,black nmtui'"
@@ -258,9 +257,9 @@ bindsym $mod+shift+b exec $browser2
 bindsym $mod+g exec gammastep -O 2000
 bindsym $mod+x exec pkill gammastep
 # Screenshot shortcuts
-bindsym $mod+ctrl+s exec cd ~/Pictures && grim -g "$(slurp)" && thunar ~/Pictures
-bindsym $mod+ctrl+a exec cd ~/Pictures && grim -g "$(slurp)" && notify-send --expire-time=2000 'Screenshot captured!'
-bindsym $mod+ctrl+g exec cd ~/Pictures && grim && notify-send --expire-time=2000 'Screenshot captured!'
+bindsym $mod+ctrl+s exec cd ~/pics && grim -g "$(slurp)" && thunar ~/pics
+bindsym $mod+ctrl+a exec cd ~/pics && grim -g "$(slurp)" && notify-send --expire-time=2000 'Screenshot captured!'
+bindsym $mod+ctrl+g exec cd ~/pics && grim && notify-send --expire-time=2000 'Screenshot captured!'
 bindsym $mod+shift+w exec ~/.config/sway/powermenu
 # Screen locking (manual)
 bindsym $mod+Escape exec $lock
@@ -274,4 +273,4 @@ bindsym $mod+q kill
 include /etc/sway/config-vars.d/*
 include /etc/sway/config.d/*
 # Set the Wallpaper
-output * bg "/home/dabat/.config/sway/Wallpapers/6kbyl19m7id41.jpg" fill
+output * bg "/home/dabat/.config/sway/Wallpapers/sjj84kfeco971.png" fill

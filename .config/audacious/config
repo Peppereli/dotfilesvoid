@@ -18,7 +18,7 @@ player_maximized=TRUE
 item_count=0
 
 [lyricwiki]
-remote-source=chartlyrics.com
+remote-source=lrclib.net
 
 [pipewire]
 volume_left=100

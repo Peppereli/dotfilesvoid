@@ -4,6 +4,7 @@ local api = vim.api
 local fn = vim.fn
 local g = vim.g
 -- Options
+vim.opt.linebreak = true
 opt.number = true
 opt.cursorline = true
 opt.relativenumber = true
