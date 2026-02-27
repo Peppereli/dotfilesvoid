@@ -273,4 +273,4 @@ bindsym $mod+q kill
 include /etc/sway/config-vars.d/*
 include /etc/sway/config.d/*
 # Set the Wallpaper
-output * bg "/home/dabat/.config/sway/Wallpapers/sjj84kfeco971.png" fill
+output * bg "/home/dabat/.config/sway/Wallpapers/4.jpg" fill
