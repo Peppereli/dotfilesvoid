@@ -17,9 +17,9 @@ input type:touchpad {
     tap enabled
     natural_scroll enabled
     middle_emulation enabled
-    dwt disabled
+    dwt enabled
     accel_profile "flat"
-    pointer_accel 0.6
+    pointer_accel 0.7
 }
 
 #============#
@@ -30,11 +30,12 @@ exec_always {
     gsettings set org.gnome.desktop.interface text-scaling-factor 1.2
     gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
 }
-
+exec_always dbus-update-activation-environment --systemd \
+  WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 #========================#
 # Appearance and Theming #
 #========================#
-font pango:jetbrains mono nerd font 11
+font pango:jetbrains mono nerd font 12
 # Declare Colors:
 set $background #516380
 set $color_urgent #FA5F55
@@ -74,11 +75,11 @@ set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 # Applications
-set $term foot
+set $term alacritty
 set $menu fuzzel --width 32 -r0
 set $fm thunar
 set $fm2 "$term -e zsh -c lf"
-set $browser librewolf
+set $browser "flatpak run io.gitlab.librewolf-community"
 set $browser2 flatpak run com.brave.Browser
 set $music "$term -e zsh -c cmus"
 set $network "$term -e zsh -c 'sleep 0.05;'NEWT_COLORS='root=,black nmtui'"
@@ -105,10 +106,10 @@ bindsym $mod+Shift+c reload
 bindsym --to-code $mod+Shift+e mode $exit
 # Screen locking (automatic, with a timeout)
 exec swayidle -w \
-    timeout 45000 $lock \
-    timeout 600 'swaymsg "output * dpms off"' \
+    timeout 600 '$lock' \
+    timeout 605 'swaymsg "output * dpms off"' \
     resume 'swaymsg "output * dpms on"' \
-    before-sleep $lock
+    before-sleep '$lock'
 
 #========================================#
 # Keyboard Shortcuts (Window Management) #
@@ -236,10 +237,11 @@ bindsym $mod+F3 exec brillo -U 10
 #========================#
 # Autostart Applications #
 #========================#
+exec --no-startup-id pipewire
 exec --no-startup-id /usr/libexec/polkit-gnome-authentication-agent-1
 exec --no-startup-id dunst
 exec --no-startup-id brillo -I
-exec --no-startup-id pipewire
+exec --no-startup-id "sleep 0.1s && sway reload"
 
 #=============================================#
 # Keyboard Shortcuts (launching applications) #
@@ -273,4 +275,13 @@ bindsym $mod+q kill
 include /etc/sway/config-vars.d/*
 include /etc/sway/config.d/*
 # Set the Wallpaper
-output * bg "/home/dabat/.config/sway/Wallpapers/4.jpg" fill
+
+# Get your laptop screen name (usually eDP-1) by running: swaymsg -t get_outputs
+set $laptop_screen eDP-1
+
+# When lid is closed: Lock and turn off screen
+bindswitch --locked lid:on exec swaylock -f -c 36454F && swaymsg "output $laptop_screen disable"
+
+# When lid is opened: Turn screen back on
+bindswitch --locked lid:off exec swaymsg "output $laptop_screen enable"
+output * bg "/home/dabat/.config/sway/Wallpapers/bat31.jpeg" fill

@@ -63,24 +63,25 @@ lfcd () {
 
 # --- Aliases ---
 alias rs='exec dbus-run-session sway'
+alias pcsx2='gamescope -w 1920 -h 1200 -W 1920 -H 1200 -f -r 60 --mouse-sensitivity 4 -- flatpak run net.pcsx2.PCSX2'
+alias gup='git add . && git commit -m "update" && git push origin main'
 alias sudo='doas'
 alias ff="~/.config/bloatfetch"
 alias ls='ls --color=auto'
 alias ll='ls -lah --color=auto'
 alias gpp='g++'
-alias startdocker="sudo ln -s /etc/sv/docker /var/service && sudo sv up docker"
-alias stopdocker="sudo rm /var/service/docker"
+alias up='sudo xbps-install -Syu && flatpak update -y'
+alias startdocker='sudo ln -s /etc/sv/docker /var/service && sudo sv up docker'
+alias stopdocker='sudo rm /var/service/docker'
 alias editsway='nvim ~/.config/sway/config'
 alias editwaybar='nvim ~/.config/waybar/config.jsonc'
 alias editwaycss='nvim ~/.config/waybar/style.css'
-alias ytmp3="yt-dlp --extract-audio --audio-format mp3 --audio-quality 0"
+alias ytmp3='yt-dlp --extract-audio --audio-format mp3 --audio-quality 0'
 alias ytmp4='yt-dlp -f "bestvideo[height<=1080][ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best" --merge-output-format mp4'
-alias androidumount='fusermount -u ~/cell/'
-alias androidmount='simple-mtpfs --device 1 ~/cell/'
 # Plugins
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export NVM_DIR='$HOME/.nvm'
+[ -s '$NVM_DIR/nvm.sh' ] && \. '$NVM_DIR/nvm.sh'  # This loads nvm
+[ -s '$NVM_DIR/bash_completion' ] && \. '$NVM_DIR/bash_completion'  # This loads nvm bash_completion

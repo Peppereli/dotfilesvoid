@@ -67,7 +67,7 @@ opt.maxmempattern = 20000
 opt.showtabline = 1
 
 -- Theme
-cmd.colorscheme('unokai')
+cmd.colorscheme('habamax')
 api.nvim_set_hl(0, 'Normal', { bg = 'none' })
 api.nvim_set_hl(0, 'NormalNC', { bg = 'none' })
 api.nvim_set_hl(0, 'EndOfBuffer', { bg = 'none' })
